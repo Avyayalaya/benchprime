@@ -1,0 +1,28 @@
+{
+  "product": "BenchPrime local development preview",
+  "cases": 12,
+  "criteria": 133,
+  "generation_mode": "author_assisted",
+  "candidate_inputs_unchanged_from_model_generation": true,
+  "operator_corrected_criterion_ids": [
+    "KEY-e09e281e826e9696603bfeb1ba59233fd6af8dc36dabe64e89cd9478d0a42e04",
+    "KEY-bd347c3de1512c7b79966218406a4ba02ad0ccf9a66c1a4656bc6e016cbaeca4",
+    "KEY-a5a80b51bf832c15deb802f87bdfcee121cf48526c97bd5eca750502a7f115ae",
+    "KEY-ec2a75379d892d0427a3edd44a0febcdddf2dcd3477a57f86ca088506c2ad971",
+    "KEY-e2f0b96db112ed8c66cc819d81ebc9e5efdc49849d50eca56a24778ed55c559c"
+  ],
+  "operator_corrected_contrasts": 6,
+  "operator_corrected_titles": 2,
+  "raw_internal_controls_retained_in_research_only": 35,
+  "independent_human_calibration": false,
+  "target_executed": false,
+  "public_release_authorized": false,
+  "reviewed_model": "claude-sonnet-5",
+  "effort": "medium",
+  "source_kind": "original fictional development-exposed Alder world",
+  "preview_key_limit": "Five operator-corrected criteria are marked proposed and have not been independently recalibrated.",
+  "upstream_pack_sha256": "64f10840ac8f21564e1cb2a8f956bcb97ca3452f12fc8585b2a7ec016e2b1a4f",
+  "portable_pack_id": "BENCHPRIME-ALDER-0.1",
+  "portable_changes": "Public module/catalogue naming and metadata bindings only; inputs and criteria unchanged.",
+  "release_state": "private_candidate"
+}

@@ -1,0 +1,68 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "case_id",
+    "input"
+  ],
+  "properties": {
+    "case_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "context",
+        "case"
+      ],
+      "properties": {
+        "context": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "task",
+            "policy",
+            "tool_boundary"
+          ],
+          "properties": {
+            "task": {
+              "type": "string",
+              "minLength": 1
+            },
+            "policy": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1
+            },
+            "tool_boundary": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "case": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "request",
+            "observations"
+          ],
+          "properties": {
+            "request": {
+              "type": "string",
+              "minLength": 1
+            },
+            "observations": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  }
+}

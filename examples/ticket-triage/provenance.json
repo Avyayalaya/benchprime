@@ -1,0 +1,18 @@
+{
+  "kind": "authored_tutorial",
+  "authorship": "AI-assisted packaging work, single context",
+  "cases": 6,
+  "criteria": 18,
+  "categories": 3,
+  "exposed_requirements": 4,
+  "gaps": 1,
+  "blind_generation_claimed": false,
+  "independent_calibration": false,
+  "provider_calls": 0,
+  "target_executed": false,
+  "public_release_authorized": false,
+  "mechanical_preparation": {
+    "bound_fields": 74,
+    "deferred_patterns": 14
+  }
+}

@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1110" viewBox="0 0 1080 1110" role="img" aria-labelledby="title description">
+<title id="title">Follow a capability down to an observable difference</title><desc id="description">Illustrative branches through authority, information and dependencies. Each use case chooses its own dimensions and potential failure mechanisms. Controlled contrasts declare change or invariance; consequential interactions get their own tests.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#17324d"/></marker></defs>
+<rect width="1080" height="1110" fill="#f5f7f9"/>
+<g font-family="Segoe UI, Arial, sans-serif">
+<text x="48" y="55" font-size="32" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="984">
+<tspan x="48" y="55">Depth comes from different failure mechanisms.</tspan>
+</text>
+<text x="48" y="98" font-size="20" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="984">
+<tspan x="48" y="98">Illustrative branches. The use case determines which distinctions matter.</tspan>
+</text>
+<text x="540" y="177" font-size="27" font-weight="600" fill="#17324d" text-anchor="middle" data-max-width="700">
+<tspan x="540" y="177">A capability that matters</tspan>
+</text>
+<text x="540" y="212" font-size="20" font-weight="400" fill="#485b6d" text-anchor="middle" data-max-width="700">
+<tspan x="540" y="212">Start from the task&#x27;s requirements</tspan>
+</text>
+<path d="M540 234C540 266 186 254 186 293" fill="none" stroke="#8b9aa8" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="186" y="333" font-size="26" font-weight="600" fill="#17324d" text-anchor="middle" data-max-width="300">
+<tspan x="186" y="333">Authority</tspan>
+</text>
+<text x="186" y="370" font-size="20" font-weight="400" fill="#485b6d" text-anchor="middle" data-max-width="280">
+<tspan x="186" y="370">Which instruction or source</tspan>
+<tspan x="186" y="396">can govern the outcome?</tspan>
+</text>
+<path d="M186 421H56V560" fill="none" stroke="#8b9aa8" stroke-width="2"/>
+<circle cx="56" cy="459" r="5" fill="#f5f7f9" stroke="#17324d" stroke-width="2"/>
+<text x="74" y="466" font-size="21" font-weight="400" fill="#17324d" text-anchor="start" data-max-width="272">
+<tspan x="74" y="466">Follows the wrong rule</tspan>
+</text>
+<circle cx="56" cy="531" r="5" fill="#f5f7f9" stroke="#17324d" stroke-width="2"/>
+<text x="74" y="538" font-size="21" font-weight="400" fill="#17324d" text-anchor="start" data-max-width="272">
+<tspan x="74" y="538">Treats a preference as an</tspan>
+<tspan x="74" y="565">obligation</tspan>
+</text>
+<text x="74" y="699" font-size="23" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="275">
+<tspan x="74" y="699">Hold the rule;</tspan>
+<tspan x="74" y="728">vary the source claim.</tspan>
+</text>
+<text x="74" y="769" font-size="19" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="270">
+<tspan x="74" y="769">Separate governing</tspan>
+<tspan x="74" y="793">instructions from</tspan>
+<tspan x="74" y="817">descriptive evidence.</tspan>
+</text>
+<path d="M540 234C540 266 540 254 540 293" fill="none" stroke="#8b9aa8" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="540" y="333" font-size="26" font-weight="600" fill="#17324d" text-anchor="middle" data-max-width="300">
+<tspan x="540" y="333">Information</tspan>
+</text>
+<text x="540" y="370" font-size="20" font-weight="400" fill="#485b6d" text-anchor="middle" data-max-width="280">
+<tspan x="540" y="370">What can be known from the</tspan>
+<tspan x="540" y="396">available evidence?</tspan>
+</text>
+<path d="M540 421H410V560" fill="none" stroke="#8b9aa8" stroke-width="2"/>
+<circle cx="410" cy="459" r="5" fill="#f5f7f9" stroke="#17324d" stroke-width="2"/>
+<text x="428" y="466" font-size="21" font-weight="400" fill="#17324d" text-anchor="start" data-max-width="272">
+<tspan x="428" y="466">Invents a missing fact</tspan>
+</text>
+<circle cx="410" cy="531" r="5" fill="#f5f7f9" stroke="#17324d" stroke-width="2"/>
+<text x="428" y="538" font-size="21" font-weight="400" fill="#17324d" text-anchor="start" data-max-width="272">
+<tspan x="428" y="538">Flattens conflicting</tspan>
+<tspan x="428" y="565">evidence</tspan>
+</text>
+<text x="428" y="699" font-size="23" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="275">
+<tspan x="428" y="699">Hold the question;</tspan>
+<tspan x="428" y="728">vary the evidence.</tspan>
+</text>
+<text x="428" y="769" font-size="19" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="270">
+<tspan x="428" y="769">Check whether the strength</tspan>
+<tspan x="428" y="793">of the conclusion remains</tspan>
+<tspan x="428" y="817">justified.</tspan>
+</text>
+<path d="M540 234C540 266 894 254 894 293" fill="none" stroke="#8b9aa8" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="894" y="333" font-size="26" font-weight="600" fill="#17324d" text-anchor="middle" data-max-width="300">
+<tspan x="894" y="333">Dependencies</tspan>
+</text>
+<text x="894" y="370" font-size="20" font-weight="400" fill="#485b6d" text-anchor="middle" data-max-width="280">
+<tspan x="894" y="370">What else has to be true</tspan>
+<tspan x="894" y="396">for this outcome to be</tspan>
+<tspan x="894" y="422">valid?</tspan>
+</text>
+<path d="M894 421H764V560" fill="none" stroke="#8b9aa8" stroke-width="2"/>
+<circle cx="764" cy="459" r="5" fill="#f5f7f9" stroke="#17324d" stroke-width="2"/>
+<text x="782" y="466" font-size="21" font-weight="400" fill="#17324d" text-anchor="start" data-max-width="272">
+<tspan x="782" y="466">Skips a prerequisite</tspan>
+</text>
+<circle cx="764" cy="531" r="5" fill="#f5f7f9" stroke="#17324d" stroke-width="2"/>
+<text x="782" y="538" font-size="21" font-weight="400" fill="#17324d" text-anchor="start" data-max-width="272">
+<tspan x="782" y="538">Misses combined</tspan>
+<tspan x="782" y="565">conditions</tspan>
+</text>
+<text x="782" y="699" font-size="23" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="275">
+<tspan x="782" y="699">Hold the goal;</tspan>
+<tspan x="782" y="728">vary a precondition.</tspan>
+</text>
+<text x="782" y="769" font-size="19" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="270">
+<tspan x="782" y="769">Check which dependencies</tspan>
+<tspan x="782" y="793">change the valid outcome.</tspan>
+</text>
+<path d="M186 590V614H894V590" fill="none" stroke="#8b9aa8" stroke-width="2" stroke-dasharray="6 6"/>
+<text x="540" y="651" font-size="21" font-weight="600" fill="#17324d" text-anchor="middle" data-max-width="880">
+<tspan x="540" y="651">Also test consequential combinations across branches.</tspan>
+</text>
+<rect x="48" y="869" width="984" height="122" rx="3" fill="#17324d" stroke="#8b9aa8"/>
+<text x="80" y="910" font-size="25" font-weight="600" fill="#ffffff" text-anchor="start" data-max-width="920">
+<tspan x="80" y="910">For each contrast, declare the expected relationship.</tspan>
+</text>
+<text x="80" y="956" font-size="23" font-weight="400" fill="#ffffff" text-anchor="start" data-max-width="425">
+<tspan x="80" y="956">Behavior should change</tspan>
+</text>
+<text x="590" y="956" font-size="23" font-weight="400" fill="#ffffff" text-anchor="start" data-max-width="410">
+<tspan x="590" y="956">or behavior should stay stable.</tspan>
+</text>
+<text x="48" y="1045" font-size="20" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="984">
+<tspan x="48" y="1045">Stop when a deeper split repeats a distinction or cannot be justified with available evidence.</tspan>
+<tspan x="48" y="1071">Record the gap.</tspan>
+</text>
+</g></svg>

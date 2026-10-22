@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="340" viewBox="0 0 1040 340" role="img" aria-labelledby="title description">
+  <title id="title">From task to a traceable evaluation</title>
+  <desc id="description">A task branches into capabilities and progressively deeper scenarios. Acceptance criteria connect those scenarios to evidence. Coverage traces back across the whole design.</desc>
+  <rect width="1040" height="340" rx="6" fill="#f4f6f8"/>
+  <g font-family="Segoe UI, Arial, sans-serif" fill="#17324d">
+    <text x="52" y="58" font-size="26" font-weight="600">Task</text>
+    <text x="288" y="58" font-size="26" font-weight="600">Capabilities</text>
+    <text x="542" y="58" font-size="26" font-weight="600">Scenarios</text>
+    <text x="798" y="58" font-size="26" font-weight="600">Criteria</text>
+  </g>
+  <g fill="none" stroke="#8ca0b3" stroke-width="2">
+    <path d="M100 176H194M194 112V240M194 112H308M194 176H308M194 240H308"/>
+    <path d="M324 112H433M433 93V131M433 93H567M433 131H567"/>
+    <path d="M324 176H433M433 157V195M433 157H567M433 195H567"/>
+    <path d="M324 240H433M433 221V259M433 221H567M433 259H567"/>
+    <path d="M583 93H814M583 131H814M583 157H814M583 195H814M583 221H814M583 259H814"/>
+  </g>
+  <g fill="#17324d">
+    <rect x="80" y="156" width="40" height="40" rx="3"/>
+    <circle cx="316" cy="112" r="9"/><circle cx="316" cy="176" r="9"/><circle cx="316" cy="240" r="9"/>
+    <circle cx="575" cy="93" r="6"/><circle cx="575" cy="131" r="6"/>
+    <circle cx="575" cy="157" r="6"/><circle cx="575" cy="195" r="6"/>
+    <circle cx="575" cy="221" r="6"/><circle cx="575" cy="259" r="6"/>
+  </g>
+  <g fill="#ffffff" stroke="#17324d" stroke-width="2">
+    <rect x="814" y="86" width="100" height="14" rx="2"/>
+    <rect x="814" y="124" width="70" height="14" rx="2"/>
+    <rect x="814" y="150" width="128" height="14" rx="2"/>
+    <rect x="814" y="188" width="90" height="14" rx="2"/>
+    <rect x="814" y="214" width="120" height="14" rx="2"/>
+    <rect x="814" y="252" width="82" height="14" rx="2"/>
+  </g>
+  <path d="M92 290V305H918V290" fill="none" stroke="#17324d" stroke-width="2"/>
+  <rect x="348" y="289" width="333" height="32" fill="#f4f6f8"/>
+  <text x="514" y="312" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="22" fill="#17324d">Traceable coverage and evidence</text>
+</svg>

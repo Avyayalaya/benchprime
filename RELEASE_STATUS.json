@@ -1,0 +1,14 @@
+{
+  "version": "0.1.0.dev5",
+  "status": "developer_preview",
+  "publication_approved": true,
+  "license_selected": false,
+  "repository": "https://github.com/Avyayalaya/benchprime",
+  "provider_runner_included": false,
+  "target_execution_included": false,
+  "product_scope": "Evaluation creation for user-defined purposes and use cases",
+  "generation_entrypoint": "One current route: assistant-led, operator-managed stages with local Python tools",
+  "review_required": [
+    "Select an explicit reuse license before describing this as licensed open source"
+  ]
+}

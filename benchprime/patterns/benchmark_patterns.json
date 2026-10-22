@@ -1,0 +1,754 @@
+{
+  "document_type": "benchmark_pattern_bundle",
+  "version": "1.0.0",
+  "review": {
+    "status": "internal_reviewed",
+    "decision": "Author-curated mechanism references; source research retained",
+    "independent": false
+  },
+  "source_ledger_hash": "f22f7f5e55e0d9798c41c3b7e5d231d41938490d6f636aa50a09e7c38297188e",
+  "source_index": [
+    {
+      "id": "S01",
+      "url": "https://github.com/patronus-ai/financebench",
+      "title": "FinanceBench repository",
+      "access": "read",
+      "inspected": "README dataset fields, public/full distinction, evidence manifest and results pointers",
+      "version_scope": "Live README on research date; describes 2023 dataset"
+    },
+    {
+      "id": "S02",
+      "url": "https://arxiv.org/html/2311.11944v1",
+      "title": "FinanceBench paper v1",
+      "access": "read_sections",
+      "inspected": "Section 3, question taxonomy, annotator quality control, 150-case sampling",
+      "version_scope": "v1"
+    },
+    {
+      "id": "S03",
+      "url": "https://huggingface.co/datasets/PatronusAI/financebench/raw/main/README.md",
+      "title": "FinanceBench HF data card",
+      "access": "read",
+      "inspected": "License and public sample description"
+    },
+    {
+      "id": "S04",
+      "url": "https://raw.githubusercontent.com/patronus-ai/financebench/main/data/financebench_open_source.jsonl",
+      "title": "FinanceBench actual public records",
+      "access": "read_sample",
+      "inspected": "First record financebench_id_03029: question, answer, justification, filing and page evidence"
+    },
+    {
+      "id": "S05",
+      "url": "https://github.com/czyssrs/FinQA",
+      "title": "FinQA repository",
+      "access": "read",
+      "inspected": "Schema, public/private evaluation contract, execution/program accuracy, 2022 formatting/label-leak corrections"
+    },
+    {
+      "id": "S06",
+      "url": "https://raw.githubusercontent.com/czyssrs/FinQA/main/dataset/test.json",
+      "title": "FinQA test data sample",
+      "access": "read_sample",
+      "inspected": "ETR/2016/page_23.pdf first example, supporting rows, subtract(5829,5735), result94"
+    },
+    {
+      "id": "S07",
+      "url": "https://github.com/randomtutu/FinSearchComp",
+      "title": "FinSearchComp repository",
+      "access": "read",
+      "inspected": "Work definition, full versus AkShare-compatible dataset, workflow and model/judge separation"
+    },
+    {
+      "id": "S08",
+      "url": "https://arxiv.org/html/2509.13160v1",
+      "title": "FinSearchComp paper v1",
+      "access": "read_sections",
+      "inspected": "Abstract/construction passages and judge appendix; HTML parsed locally after text extractor selected appendix only",
+      "version_scope": "v1"
+    },
+    {
+      "id": "S09",
+      "url": "https://randomtutu.github.io/FinSearchComp/",
+      "title": "FinSearchComp project site",
+      "access": "read_extract",
+      "inspected": "Task framing: time-sensitive retrieval, buried figures, multi-step retrieval/calculation and financial conventions"
+    },
+    {
+      "id": "S10",
+      "url": "https://raw.githubusercontent.com/randomtutu/FinSearchComp/main/data/finsearchcomp_data.json",
+      "title": "FinSearchComp actual records",
+      "access": "read_sample",
+      "inspected": "First historical lookup record; prompt/reference/judge/label fields; units, rounding and 1% tolerance"
+    },
+    {
+      "id": "S11",
+      "url": "https://github.com/google-research/android_world",
+      "title": "AndroidWorld repository",
+      "access": "read",
+      "inspected": "116 tasks/20 apps, parameter variations, emulator, task authoring and budget-update disclosures"
+    },
+    {
+      "id": "S12",
+      "url": "https://raw.githubusercontent.com/google-research/android_world/main/docs/tasks_guide.md",
+      "title": "AndroidWorld task authoring guide",
+      "access": "read",
+      "inspected": "SQLite calendar example, integrity comparison, noise generation, Markor file task, lifecycle hooks"
+    },
+    {
+      "id": "S13",
+      "url": "https://os-world.github.io/",
+      "title": "Original OSWorld landing page",
+      "access": "read",
+      "inspected": "Original369tasks;8GoogleDrive exclusions/manual setup caveat",
+      "version_scope": "Original-version landing page; not current performance"
+    },
+    {
+      "id": "S14",
+      "url": "https://github.com/xlang-ai/OSWorld",
+      "title": "OSWorld repository",
+      "access": "read_sections",
+      "inspected": "Verified release notice, execution configuration and result/inspection surfaces"
+    },
+    {
+      "id": "S15",
+      "url": "https://xlang.ai/blog/osworld-verified",
+      "title": "OSWorld-Verified authors' revision report",
+      "access": "read_sections",
+      "inspected": "300+feedback items; environment/timing issues; ambiguous tasks; equivalent-formula and alternative-solution false negatives"
+    },
+    {
+      "id": "S16",
+      "url": "https://raw.githubusercontent.com/xlang-ai/OSWorld/main/evaluation_examples/examples/libreoffice_calc/01b269ae-2111-4a07-81fd-3fcd711993b0.json",
+      "title": "OSWorld Calc task 01b269ae",
+      "access": "read",
+      "inspected": "B1:E30 fill-down instruction, initial file setup, preservation scope, reference/result and comparison rule"
+    },
+    {
+      "id": "S17",
+      "url": "https://github.com/web-arena-x/webarena",
+      "title": "WebArena repository",
+      "access": "read",
+      "inspected": "812examples, self-hosted environment, demo/reproduction distinction, resets, human trajectories and dataset revision"
+    },
+    {
+      "id": "S18",
+      "url": "https://github.com/ServiceNow/WorkArena",
+      "title": "WorkArena repository",
+      "access": "read",
+      "inspected": "33atomic tasks/19912instances,682compositional tasks, cheat/validation demo, gated runtime access"
+    },
+    {
+      "id": "S19",
+      "url": "https://github.com/SWE-bench/SWE-bench",
+      "title": "SWE-bench repository",
+      "access": "read",
+      "inspected": "Issue-to-patch contract,500Verified cases, Docker, gold-patch testing and caching warning",
+      "version_scope": "Live README contains 2026 CLI changes; not original CLI instructions"
+    },
+    {
+      "id": "S20",
+      "url": "https://raw.githubusercontent.com/SWE-bench/SWE-bench/ca6e4e0d252f32f8762625b73575d5dee49d0a5a/swebench/harness/grading.py",
+      "title": "SWE-bench grading implementation",
+      "access": "read_sections",
+      "inspected": "get_logs_eval, resolution/maintenance grading, suite-execution checks",
+      "commit": "ca6e4e0d252f32f8762625b73575d5dee49d0a5a",
+      "sha256": "a095273010175001a6779e365b3b77abb8657c7ac2e4f80b4bc360faa6f09483"
+    },
+    {
+      "id": "S21",
+      "url": "https://github.com/laude-institute/terminal-bench",
+      "title": "Terminal-Bench version1 repository",
+      "access": "read",
+      "inspected": "Dataset/harness separation, instruction/verifier/oracle components, Harbor redirect",
+      "version_scope": "Version1 repository; not Terminal-Bench2 task count"
+    },
+    {
+      "id": "S22",
+      "url": "https://www.tbench.ai/news/announcement-2-0",
+      "title": "Terminal-Bench2 and Harbor announcement",
+      "access": "read",
+      "inspected": "Quality verification motivation, manual/LM-assisted checks, unstable download task example"
+    },
+    {
+      "id": "S23",
+      "url": "https://docs.harborframework.com/core-concepts/tasks/overview",
+      "title": "Harbor task format",
+      "access": "read",
+      "inspected": "instruction/config/environment/solution/tests; task/trial distinction; multi-step tasks; independent package"
+    },
+    {
+      "id": "S24",
+      "url": "https://docs.harborframework.com/core-concepts/tasks/verifier",
+      "title": "Harbor verifier guide",
+      "access": "read",
+      "inspected": "Post-agent verifier placement, reward formats, separate verifier environment and regrading"
+    },
+    {
+      "id": "S25",
+      "url": "https://github.com/sierra-research/tau2-bench",
+      "title": "tau-bench family current repository",
+      "access": "read",
+      "inspected": "tau3 release, domains, task fixes, July2026v1.0.1 comparability warning",
+      "version_scope": "Current tau3 documentation in repo named tau2-bench"
+    },
+    {
+      "id": "S26",
+      "url": "https://raw.githubusercontent.com/sierra-research/tau2-bench/main/src/tau2/data_model/tasks.py",
+      "title": "tau task schema",
+      "access": "read_sections",
+      "inspected": "UserScenario,StructuredUserInstructions,Description,Action,RewardType,TaskIssue,EvaluationCriteria"
+    },
+    {
+      "id": "S27",
+      "url": "https://raw.githubusercontent.com/sierra-research/tau2-bench/ddc66a777e520373975f15d3abec989cfe2ec371/docs/evaluation.md",
+      "title": "tau task schema and evaluation guide",
+      "access": "read",
+      "inspected": "Reward components, reference trajectory versus mandatory action, airline task1 worked example",
+      "commit": "ddc66a777e520373975f15d3abec989cfe2ec371",
+      "sha256": "017e992b8e8b57c227523c63c4a2597b69a328c0108bd94b1c9028fed6a26ac4"
+    },
+    {
+      "id": "S28",
+      "url": "https://arxiv.org/html/2311.12983v1",
+      "title": "GAIA paper v1",
+      "access": "read_sections",
+      "inspected": "Introduction/design rationale, sample questions,466total and166/300release split",
+      "version_scope": "v1; no current leaderboard or contamination claim"
+    },
+    {
+      "id": "S29",
+      "url": "https://github.com/openai/simple-evals",
+      "title": "simple-evals repository status",
+      "access": "read_sections",
+      "inspected": "July2025update cessation; remaining HealthBench/BrowseComp/SimpleQA reference implementations"
+    },
+    {
+      "id": "S30",
+      "url": "https://raw.githubusercontent.com/openai/simple-evals/5e623c2b400af62a1278e23595f95b0853d7fe8a/browsecomp_eval.py",
+      "title": "BrowseComp reference implementation",
+      "access": "read",
+      "inspected": "Output contract,judge template,grade_sample parser and score comparison",
+      "commit": "5e623c2b400af62a1278e23595f95b0853d7fe8a",
+      "sha256": "0bfb33cfdf5fa0e0d7da48068cc86c5a22acc755979be4a2b46f8a821cc44b74"
+    },
+    {
+      "id": "S31",
+      "url": "https://github.com/xiaowu0162/LongMemEval",
+      "title": "LongMemEval repository",
+      "access": "read_sections",
+      "inspected": "Original/cleaned500questions,ability taxonomy,evidence fields,oracle/full history,abstention exclusion andV2notice"
+    },
+    {
+      "id": "S32",
+      "url": "https://github.com/Yale-LILY/SummEval",
+      "title": "SummEval repository",
+      "access": "read",
+      "inspected": "1600summaries,100articles,16systems,5crowd+3expert ratings,four dimensions and source pairing"
+    },
+    {
+      "id": "S33",
+      "url": "https://arxiv.org/html/2007.12626v3",
+      "title": "SummEval paper v3",
+      "access": "read_sections",
+      "inspected": "Human annotation methodology,1-5Likert scale,randomization and metric/annotation limitations; HTML also parsed for annotation passages"
+    },
+    {
+      "id": "S34",
+      "url": "https://github.com/Yale-LILY/QMSum",
+      "title": "QMSum repository",
+      "access": "read",
+      "inspected": "1808pairs/232meetings,three domains,query/general/topic fields,speaker turns and relevant spans"
+    },
+    {
+      "id": "S35",
+      "url": "https://arxiv.org/html/2505.08775v1",
+      "title": "HealthBench paper v1",
+      "access": "read_sections",
+      "inspected": "Abstract5000/48562/262,axes/themes,criterion andaggregate scoring; HTML parsed because simplified extraction returned contributor appendix",
+      "version_scope": "v1; no clinical advice or real-world safety certification inferred"
+    },
+    {
+      "id": "S36",
+      "url": "https://raw.githubusercontent.com/openai/simple-evals/main/healthbench_eval.py",
+      "title": "HealthBench evaluator",
+      "access": "read_sections",
+      "inspected": "RubricItem,judge instructions,calculate_score,clipped aggregation,physician completion groups and optional length adjustment"
+    },
+    {
+      "id": "S37",
+      "url": "https://github.com/shmsw25/FActScore",
+      "title": "FActScore repository",
+      "access": "read_sections",
+      "inspected": "Atomic fact support,precision,response rate,fact counts,custom knowledge source and length/abstention options"
+    },
+    {
+      "id": "S38",
+      "url": "https://github.com/LiveBench/LiveBench",
+      "title": "LiveBench repository",
+      "access": "read_sections",
+      "inspected": "Fresh-source/objective-answer design,question schema,version selection,public/newerrelease availability caveat"
+    },
+    {
+      "id": "S39",
+      "url": "https://github.com/marcotcr/checklist",
+      "title": "CheckList repository",
+      "access": "read_sections",
+      "inspected": "Behavioral suite,generation/perturbation tutorials,visual summaries and capability-oriented use"
+    },
+    {
+      "id": "S40",
+      "url": "https://raw.githubusercontent.com/marcotcr/checklist/master/checklist/test_types.py",
+      "title": "CheckList test classes",
+      "access": "read",
+      "inspected": "MFT,INV,DIR definitions,expectation and metadata fields"
+    },
+    {
+      "id": "S41",
+      "url": "https://crfm.stanford.edu/2022/11/17/helm.html",
+      "title": "HELM methodological introduction",
+      "access": "read_sections",
+      "inspected": "Scenario/metric taxonomy,explicit omissions,multi-metric measurement,adaptation control and human summarization findings",
+      "version_scope": "Original2022methodology; not current model results"
+    },
+    {
+      "id": "S42",
+      "url": "https://gorilla.cs.berkeley.edu/blogs/8_berkeley_function_calling_leaderboard.html",
+      "title": "BFCL original methodological explanation",
+      "access": "read_sections",
+      "inspected": "Simple/multiple/parallel/parallel-multiple definitions,AST/execution,relevance detection,category presentation and exclusion caveats",
+      "version_scope": "OriginalBFCL explanation; later versions linked but not claimed reviewed"
+    }
+  ],
+  "patterns": [
+    {
+      "id": "BP-01",
+      "version": "1.0.0",
+      "name": "Workload coverage",
+      "benchmark_ids": [
+        "B03",
+        "B15",
+        "B20"
+      ],
+      "source_ids": [
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S34",
+        "S41"
+      ],
+      "mechanism": "Declare job/behavior exposure and omissions.",
+      "eligibility": "Apply only where this mechanism addresses the declared job; otherwise exclude with rationale.",
+      "non_transfer": "No external dataset, grading formula, task authority or execution capability is imported.",
+      "artifact_kinds": [
+        "requirement",
+        "coverage"
+      ],
+      "check_ids": [
+        "coverage_links"
+      ],
+      "rights": "mechanism_reference_only",
+      "status": "internal_reviewed",
+      "review_limit": "Author-curated from primary-source research; not independent certification",
+      "hash": "1e68f649927712b8eb177234421697f1083133a0eaf5e3acce98cf692019da48"
+    },
+    {
+      "id": "BP-02",
+      "version": "1.0.0",
+      "name": "Evidence-backed criteria",
+      "benchmark_ids": [
+        "B01",
+        "B02",
+        "B17"
+      ],
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S37"
+      ],
+      "mechanism": "Bind criteria to visible source text or policy.",
+      "eligibility": "Apply only where this mechanism addresses the declared job; otherwise exclude with rationale.",
+      "non_transfer": "No external dataset, grading formula, task authority or execution capability is imported.",
+      "artifact_kinds": [
+        "criterion"
+      ],
+      "check_ids": [
+        "source_links"
+      ],
+      "rights": "mechanism_reference_only",
+      "status": "internal_reviewed",
+      "review_limit": "Author-curated from primary-source research; not independent certification",
+      "hash": "0a4618a4667b0b631259c810fa82b9961538ef130623d3026660855bfed7a92b"
+    },
+    {
+      "id": "BP-03",
+      "version": "1.0.0",
+      "name": "Distinct quality properties",
+      "benchmark_ids": [
+        "B14",
+        "B16"
+      ],
+      "source_ids": [
+        "S32",
+        "S33",
+        "S35",
+        "S36"
+      ],
+      "mechanism": "Separate meaning, relevance and communication.",
+      "eligibility": "Apply only where this mechanism addresses the declared job; otherwise exclude with rationale.",
+      "non_transfer": "No external dataset, grading formula, task authority or execution capability is imported.",
+      "artifact_kinds": [
+        "dimension"
+      ],
+      "check_ids": [
+        "criterion_links"
+      ],
+      "rights": "mechanism_reference_only",
+      "status": "internal_reviewed",
+      "review_limit": "Author-curated from primary-source research; not independent certification",
+      "hash": "4a44daf306070043cdb61474d589d0135a0c9d9e55f28b93267ba4157ce629f4"
+    },
+    {
+      "id": "BP-04",
+      "version": "1.0.0",
+      "name": "Controlled contrasts",
+      "benchmark_ids": [
+        "B04",
+        "B19"
+      ],
+      "source_ids": [
+        "S11",
+        "S12",
+        "S39",
+        "S40"
+      ],
+      "mechanism": "Record actual edits and expected semantic relation.",
+      "eligibility": "Apply only where this mechanism addresses the declared job; otherwise exclude with rationale.",
+      "non_transfer": "No external dataset, grading formula, task authority or execution capability is imported.",
+      "artifact_kinds": [
+        "family"
+      ],
+      "check_ids": [
+        "contrast_diffs"
+      ],
+      "rights": "mechanism_reference_only",
+      "status": "internal_reviewed",
+      "review_limit": "Author-curated from primary-source research; not independent certification",
+      "hash": "c5825e9252dd03809744990c001ae3cc2c41032d3ad0e74c945a03feed74f407"
+    },
+    {
+      "id": "BP-05",
+      "version": "1.0.0",
+      "name": "Coherent worlds",
+      "benchmark_ids": [
+        "B04",
+        "B13"
+      ],
+      "source_ids": [
+        "S11",
+        "S12",
+        "S31"
+      ],
+      "mechanism": "Preserve world provenance and constraints across variants.",
+      "eligibility": "Apply only where this mechanism addresses the declared job; otherwise exclude with rationale.",
+      "non_transfer": "No external dataset, grading formula, task authority or execution capability is imported.",
+      "artifact_kinds": [
+        "world",
+        "case"
+      ],
+      "check_ids": [
+        "source_links"
+      ],
+      "rights": "mechanism_reference_only",
+      "status": "internal_reviewed",
+      "review_limit": "Author-curated from primary-source research; not independent certification",
+      "hash": "1e15a204853e0e472d72c763951408e7d69a64e5b289453a21dd3b31d7f03fe8"
+    },
+    {
+      "id": "BP-06",
+      "version": "1.0.0",
+      "name": "Atomic and composed work",
+      "benchmark_ids": [
+        "B07",
+        "B09"
+      ],
+      "source_ids": [
+        "S18",
+        "S21",
+        "S22",
+        "S23",
+        "S24"
+      ],
+      "mechanism": "Separate diagnostic exposure from representative work.",
+      "eligibility": "Apply only where this mechanism addresses the declared job; otherwise exclude with rationale.",
+      "non_transfer": "No external dataset, grading formula, task authority or execution capability is imported.",
+      "artifact_kinds": [
+        "case"
+      ],
+      "check_ids": [
+        "coverage_links"
+      ],
+      "rights": "mechanism_reference_only",
+      "status": "internal_reviewed",
+      "review_limit": "Author-curated from primary-source research; not independent certification",
+      "hash": "cc04d7f871952317697ced188d927d12386711ee3faa220723f56de4ca1b7a05"
+    },
+    {
+      "id": "BP-07",
+      "version": "1.0.0",
+      "name": "Local acceptance criteria",
+      "benchmark_ids": [
+        "B10",
+        "B16"
+      ],
+      "source_ids": [
+        "S25",
+        "S26",
+        "S27",
+        "S35",
+        "S36"
+      ],
+      "mechanism": "State criterion applicability, alternatives and consequence.",
+      "eligibility": "Apply only where this mechanism addresses the declared job; otherwise exclude with rationale.",
+      "non_transfer": "No external dataset, grading formula, task authority or execution capability is imported.",
+      "artifact_kinds": [
+        "criterion"
+      ],
+      "check_ids": [
+        "criterion_links"
+      ],
+      "rights": "mechanism_reference_only",
+      "status": "internal_reviewed",
+      "review_limit": "Author-curated from primary-source research; not independent certification",
+      "hash": "9ce4d5ded8a99fbfc5eb264c0e85ff0cce8735957489ab708f0fa7c343eac76b"
+    },
+    {
+      "id": "BP-08",
+      "version": "1.0.0",
+      "name": "Equivalent valid solutions",
+      "benchmark_ids": [
+        "B05",
+        "B08",
+        "B10"
+      ],
+      "source_ids": [
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S19",
+        "S20",
+        "S25",
+        "S26",
+        "S27"
+      ],
+      "mechanism": "Accept different correct answers and preserve unaffected facts.",
+      "eligibility": "Apply only where this mechanism addresses the declared job; otherwise exclude with rationale.",
+      "non_transfer": "No external dataset, grading formula, task authority or execution capability is imported.",
+      "artifact_kinds": [
+        "anchor"
+      ],
+      "check_ids": [
+        "criterion_links"
+      ],
+      "rights": "mechanism_reference_only",
+      "status": "internal_reviewed",
+      "review_limit": "Author-curated from primary-source research; not independent certification",
+      "hash": "71bb28fcefbb3457efe3dd13fcb988e71eee77242e3afb9958651f0f19c9fe12"
+    },
+    {
+      "id": "BP-09",
+      "version": "1.0.0",
+      "name": "Information boundaries",
+      "benchmark_ids": [
+        "B02",
+        "B09",
+        "B10"
+      ],
+      "source_ids": [
+        "S05",
+        "S06",
+        "S21",
+        "S22",
+        "S23",
+        "S24",
+        "S25",
+        "S26",
+        "S27"
+      ],
+      "mechanism": "Keep inputs separate from criteria and internal examples.",
+      "eligibility": "Apply only where this mechanism addresses the declared job; otherwise exclude with rationale.",
+      "non_transfer": "No external dataset, grading formula, task authority or execution capability is imported.",
+      "artifact_kinds": [
+        "case"
+      ],
+      "check_ids": [
+        "boundary_projection"
+      ],
+      "rights": "mechanism_reference_only",
+      "status": "internal_reviewed",
+      "review_limit": "Author-curated from primary-source research; not independent certification",
+      "hash": "71d3ddb4e5d6402c788ef5a2deee4b613b17f968c1c6db262d19790190e36068"
+    },
+    {
+      "id": "BP-10",
+      "version": "1.0.0",
+      "name": "Observable output contract",
+      "benchmark_ids": [
+        "B11",
+        "B12",
+        "B21"
+      ],
+      "source_ids": [
+        "S28",
+        "S29",
+        "S30",
+        "S42"
+      ],
+      "mechanism": "Make outcome and verification mode explicit.",
+      "eligibility": "Apply only where this mechanism addresses the declared job; otherwise exclude with rationale.",
+      "non_transfer": "No external dataset, grading formula, task authority or execution capability is imported.",
+      "artifact_kinds": [
+        "criterion"
+      ],
+      "check_ids": [
+        "criterion_links"
+      ],
+      "rights": "mechanism_reference_only",
+      "status": "internal_reviewed",
+      "review_limit": "Author-curated from primary-source research; not independent certification",
+      "hash": "be0dcbe4488b1845093641505cd48e1f0b9c2825aa3d6b36a86cb7ab0936e12a"
+    },
+    {
+      "id": "BP-11",
+      "version": "1.0.0",
+      "name": "Versions and generalization",
+      "benchmark_ids": [
+        "B08",
+        "B13",
+        "B18"
+      ],
+      "source_ids": [
+        "S19",
+        "S20",
+        "S31",
+        "S38"
+      ],
+      "mechanism": "Pin sources and reserve disjoint development worlds.",
+      "eligibility": "Apply only where this mechanism addresses the declared job; otherwise exclude with rationale.",
+      "non_transfer": "No external dataset, grading formula, task authority or execution capability is imported.",
+      "artifact_kinds": [
+        "world"
+      ],
+      "check_ids": [
+        "source_links"
+      ],
+      "rights": "mechanism_reference_only",
+      "status": "internal_reviewed",
+      "review_limit": "Author-curated from primary-source research; not independent certification",
+      "hash": "790dd38e159ef818898b60ee95370544445021a42f3c8a2da1de5f144ec6b88e"
+    },
+    {
+      "id": "BP-12",
+      "version": "1.0.0",
+      "name": "Key and fixture review",
+      "benchmark_ids": [
+        "B01",
+        "B05",
+        "B09"
+      ],
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S21",
+        "S22",
+        "S23",
+        "S24"
+      ],
+      "mechanism": "Expose author/reviewer limits and challenge the key.",
+      "eligibility": "Apply only where this mechanism addresses the declared job; otherwise exclude with rationale.",
+      "non_transfer": "No external dataset, grading formula, task authority or execution capability is imported.",
+      "artifact_kinds": [
+        "anchor"
+      ],
+      "check_ids": [
+        "criterion_links"
+      ],
+      "rights": "mechanism_reference_only",
+      "status": "internal_reviewed",
+      "review_limit": "Author-curated from primary-source research; not independent certification",
+      "hash": "4ebb1586ba9e2d3019ad2ba96c15145c71a676aebcc3a94b8110f446e6c9e844"
+    },
+    {
+      "id": "BP-13",
+      "version": "1.0.0",
+      "name": "Separate reporting axes",
+      "benchmark_ids": [
+        "B14",
+        "B20",
+        "B21"
+      ],
+      "source_ids": [
+        "S32",
+        "S33",
+        "S41",
+        "S42"
+      ],
+      "mechanism": "Keep priority, exposure and observed outcomes separate.",
+      "eligibility": "Apply only where this mechanism addresses the declared job; otherwise exclude with rationale.",
+      "non_transfer": "No external dataset, grading formula, task authority or execution capability is imported.",
+      "artifact_kinds": [
+        "coverage"
+      ],
+      "check_ids": [
+        "coverage_links"
+      ],
+      "rights": "mechanism_reference_only",
+      "status": "internal_reviewed",
+      "review_limit": "Author-curated from primary-source research; not independent certification",
+      "hash": "63b017f3a88a56844a55a8488310324c3be954b2303010e5d2047e4ca8ef3092"
+    },
+    {
+      "id": "BP-14",
+      "version": "1.0.0",
+      "name": "Portable customer delivery",
+      "benchmark_ids": [
+        "B06",
+        "B09",
+        "B15"
+      ],
+      "source_ids": [
+        "S17",
+        "S21",
+        "S22",
+        "S23",
+        "S24",
+        "S34"
+      ],
+      "mechanism": "Supply complete inputs and usable customer explanations.",
+      "eligibility": "Apply only where this mechanism addresses the declared job; otherwise exclude with rationale.",
+      "non_transfer": "No external dataset, grading formula, task authority or execution capability is imported.",
+      "artifact_kinds": [
+        "case"
+      ],
+      "check_ids": [
+        "boundary_projection"
+      ],
+      "rights": "mechanism_reference_only",
+      "status": "internal_reviewed",
+      "review_limit": "Author-curated from primary-source research; not independent certification",
+      "hash": "fb50a4de62e66b22ce2d8a448aa3c90d075e0345811b26827bc9f1a640a45089"
+    }
+  ]
+}

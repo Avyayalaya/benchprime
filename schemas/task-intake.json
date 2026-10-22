@@ -1,0 +1,225 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "document_type",
+    "schema_version",
+    "brief_id",
+    "revision",
+    "target",
+    "sources",
+    "target_policies",
+    "preferences",
+    "creator_constraints",
+    "examples",
+    "scope_exclusions",
+    "rights"
+  ],
+  "properties": {
+    "document_type": {
+      "enum": [
+        "repeatability_intake"
+      ]
+    },
+    "schema_version": {
+      "enum": [
+        "3.0.0"
+      ]
+    },
+    "brief_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "job",
+        "instructions",
+        "input_shape",
+        "output_shape",
+        "language"
+      ],
+      "properties": {
+        "job": {
+          "type": "string",
+          "minLength": 1
+        },
+        "instructions": {
+          "type": "string",
+          "minLength": 1
+        },
+        "input_shape": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "output_shape": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "language": {
+          "enum": [
+            "en"
+          ]
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source_id",
+          "title",
+          "text",
+          "role",
+          "authority",
+          "provenance",
+          "rights"
+        ],
+        "properties": {
+          "source_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "enum": [
+              "policy",
+              "evidence",
+              "example",
+              "implementation_description"
+            ]
+          },
+          "authority": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "basis"
+            ],
+            "properties": {
+              "kind": {
+                "enum": [
+                  "normative",
+                  "descriptive",
+                  "unknown"
+                ]
+              },
+              "basis": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "provenance": {
+            "enum": [
+              "fictional",
+              "public",
+              "permissioned"
+            ]
+          },
+          "rights": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "status",
+              "basis"
+            ],
+            "properties": {
+              "status": {
+                "enum": [
+                  "granted",
+                  "unknown",
+                  "denied"
+                ]
+              },
+              "basis": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      },
+      "minItems": 1
+    },
+    "target_policies": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "preferences": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "creator_constraints": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "examples": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "scope_exclusions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "rights": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "basis"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "granted",
+            "unknown",
+            "denied"
+          ]
+        },
+        "basis": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

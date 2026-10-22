@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="330" viewBox="0 0 1120 330" role="img" aria-labelledby="title desc">
+  <title id="title">The BenchPrime evaluation process</title>
+  <desc id="desc">Read the task and rules. Choose what needs testing and write cases. Derive grading criteria from case inputs and review them. Check uncovered requirements, verify references and export files.</desc>
+  <rect width="1120" height="330" rx="8" fill="#f4f6f8"/>
+  <g fill="none" stroke="#a1b1bf" stroke-width="2">
+    <path d="M220 128H302M490 128H572M760 128H842"/>
+    <path d="m290 120 12 8-12 8m270-16 12 8-12 8m270-16 12 8-12 8" stroke="#17324d"/>
+  </g>
+  <g fill="#fff" stroke="#17324d" stroke-width="2">
+    <rect x="42" y="86" width="178" height="84" rx="4"/>
+    <rect x="312" y="86" width="178" height="84" rx="4"/>
+    <rect x="582" y="86" width="178" height="84" rx="4"/>
+    <rect x="852" y="86" width="218" height="84" rx="4"/>
+  </g>
+  <g fill="#17324d" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="600" text-anchor="middle">
+    <text x="131" y="123">Read the task</text><text x="131" y="152">and its rules</text>
+    <text x="401" y="123">Choose tests</text><text x="401" y="152">and write cases</text>
+    <text x="671" y="123">Write and check</text><text x="671" y="152">grading criteria</text>
+    <text x="961" y="123">Check coverage</text><text x="961" y="152">and export</text>
+  </g>
+  <g fill="#40576b" font-family="Segoe UI, Arial, sans-serif" font-size="20" text-anchor="middle">
+    <text x="131" y="216">Requirements and facts</text>
+    <text x="401" y="216">Changes each case tests</text>
+    <text x="671" y="216">Sources and valid answers</text>
+    <text x="961" y="216">Files and remaining gaps</text>
+  </g>
+  <path d="M42 260H1070" stroke="#cbd4dd"/>
+  <text x="560" y="298" text-anchor="middle" fill="#17324d" font-family="Segoe UI, Arial, sans-serif" font-size="21">Define the purpose. Choose the cases. Write and review the grading criteria.</text>
+</svg>

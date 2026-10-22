@@ -1,0 +1,143 @@
+{
+  "document_type": "evaluation_design_principles",
+  "version": "1.0.0",
+  "principles": [
+    {
+      "id": "P1",
+      "title": "Outcome over imitation",
+      "meaning": "Permit equivalent correct answers and sensible organization.",
+      "expression": "Different wording or same wording can both pass.",
+      "limit": "Preference: substantive fit outranks a golden answer."
+    },
+    {
+      "id": "P2",
+      "title": "Preserve meaning",
+      "meaning": "Factual fidelity and material qualifications outrank cosmetic brevity.",
+      "expression": "No unsupported cause, owner, completion, confidence or scope.",
+      "limit": "Invariant: do not knowingly reward a false answer."
+    },
+    {
+      "id": "P3",
+      "title": "Bounded comprehensiveness",
+      "meaning": "Account for every declared target subdimension and visible omission.",
+      "expression": "Use the coverage ledger; do not infer universal coverage from a case count.",
+      "limit": "Customer may expand scope with explicit new requirements."
+    },
+    {
+      "id": "P4",
+      "title": "Controlled contrasts",
+      "meaning": "Prefer one meaningful input change with all other fields stable.",
+      "expression": "Exact changed paths and causal limitations accompany each pair.",
+      "limit": "Some desired comparisons bundle role and purpose; disclose that limitation."
+    },
+    {
+      "id": "P5",
+      "title": "Balanced challenge",
+      "meaning": "Include clear success and stronger-evidence controls alongside stress.",
+      "expression": "Always refuse, always hedge and always follow the latest source should not win.",
+      "limit": "No severity is inferred from dramatic language alone."
+    },
+    {
+      "id": "P6",
+      "title": "Selection earns its place",
+      "meaning": "Each family adds a distinct important mechanism or contrast.",
+      "expression": "Retain/revise/replace/add decisions are documented against the original collection.",
+      "limit": "No claim that a globally exhaustive candidate pool was ranked."
+    },
+    {
+      "id": "P7",
+      "title": "Priority is not score",
+      "meaning": "Separate dimension importance, failure severity and case allocation.",
+      "expression": "Changing weights never changes the factual answer or counts as measured performance.",
+      "limit": "Recommended profile is author-reasoned and customer-editable."
+    },
+    {
+      "id": "P8",
+      "title": "Traceable authority",
+      "meaning": "Expected behavior follows explicit task policy and supplied source passages.",
+      "expression": "Requirements, synthetic world rules and inferred design choices are labelled.",
+      "limit": "High-stakes domain authority must be supplied separately."
+    },
+    {
+      "id": "P9",
+      "title": "Honest insight",
+      "meaning": "State useful failure hypotheses with alternatives and disconfirmation.",
+      "expression": "Do not label an unrun case a discovered target defect.",
+      "limit": "Scoring and actual execution are optional downstream services."
+    },
+    {
+      "id": "P10",
+      "title": "Usable ownership",
+      "meaning": "Deliver complete inputs, explanations and adaptation rules.",
+      "expression": "No private state or conversation history is required to inspect a case.",
+      "limit": "Only candidate JSONL goes to the target; workbook is operator material."
+    }
+  ],
+  "generator_dimensions": [
+    {
+      "id": "D01",
+      "title": "User and evaluation intent",
+      "meaning": "Intended decision, stakes, reviewer and exclusions"
+    },
+    {
+      "id": "D02",
+      "title": "Agent and operating context",
+      "meaning": "Actual evaluated boundary, observations, tools/state and missing access"
+    },
+    {
+      "id": "D03",
+      "title": "Domain grounding",
+      "meaning": "Source authority, applicability, synthetic assumptions and expertise gaps"
+    },
+    {
+      "id": "D04",
+      "title": "Coverage and diagnostic ambition",
+      "meaning": "Declared universe, depth, contrasts, interactions and omissions"
+    },
+    {
+      "id": "D05",
+      "title": "Scenario/interaction quality",
+      "meaning": "Coherent world, information boundaries and plausible behavior"
+    },
+    {
+      "id": "D06",
+      "title": "Acceptable behavior",
+      "meaning": "Outcome standards, alternatives, permissions and unresolved disagreement"
+    },
+    {
+      "id": "D07",
+      "title": "Measurement/diagnosis",
+      "meaning": "Observable evidence, evaluator challenges and supported interpretations"
+    },
+    {
+      "id": "D08",
+      "title": "Usefulness/usability",
+      "meaning": "First-use instructions, adaptation work and actionable open questions"
+    },
+    {
+      "id": "D09",
+      "title": "Generation competence",
+      "meaning": "Reproducible stages, admission/rejection reasons and assistance log"
+    },
+    {
+      "id": "D10",
+      "title": "Operational dependability",
+      "meaning": "Versioned delivery, honest partial states, safe effects and real resource accounting"
+    },
+    {
+      "id": "D11",
+      "title": "Evolution/compounding",
+      "meaning": "Exposure history, revision triggers, regression controls and scoped learning"
+    }
+  ],
+  "sources": [
+    {
+      "kind": "pre-release methodology artifact",
+      "sha256": "28e25c9f19b53dcd3b7522a135cf46f7d36a01dba9d999fa4ebcb287128f03bd"
+    },
+    {
+      "kind": "pre-release methodology artifact",
+      "sha256": "d0c159e4d1c074e371131ab81a2a0a65d3c35a079f9aaa55de1571afb161daa7"
+    }
+  ]
+}

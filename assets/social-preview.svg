@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">BenchPrime: Write tests and define how to judge them</title>
+  <desc id="desc">Original product artwork. Read the task and its rules, write cases and grading criteria, and review those criteria against the sources.</desc>
+  <rect width="1280" height="640" fill="#f4f6f8"/>
+  <rect x="0" y="0" width="820" height="640" fill="#17324d"/>
+  <g font-family="Segoe UI, Arial, sans-serif" fill="#fff">
+    <text x="72" y="150" font-size="88" font-weight="700" letter-spacing="-2">BenchPrime</text>
+    <text x="76" y="256" font-size="42" font-weight="600">Write tests for your task.</text>
+    <text x="76" y="312" font-size="42" font-weight="600">Define how to judge them.</text>
+    <text x="76" y="430" font-size="25" fill="#d8e4ee">Read the task and its rules.</text>
+    <text x="76" y="470" font-size="25" fill="#d8e4ee">Write cases and grading criteria.</text>
+    <text x="76" y="510" font-size="25" fill="#d8e4ee">Review criteria against sources.</text>
+  </g>
+  <g stroke="#8ca0b3" stroke-width="3" fill="none">
+    <path d="M890 320H947V200H1010M947 320H1010M947 320V440H1010"/>
+    <path d="M1010 200H1060V160H1174M1060 200V240H1174M1010 320H1174M1010 440H1060V400H1174M1060 440V480H1174"/>
+  </g>
+  <g fill="#17324d">
+    <rect x="874" y="304" width="32" height="32" rx="3"/>
+    <circle cx="1010" cy="200" r="10"/><circle cx="1010" cy="320" r="10"/><circle cx="1010" cy="440" r="10"/>
+    <circle cx="1174" cy="160" r="7"/><circle cx="1174" cy="240" r="7"/><circle cx="1174" cy="320" r="7"/>
+    <circle cx="1174" cy="400" r="7"/><circle cx="1174" cy="480" r="7"/>
+  </g>
+</svg>
