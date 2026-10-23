@@ -149,6 +149,14 @@ Internal control annotations distinguish `met`, `not_met`, `unresolved` and
 uncertain judgment. Authored/model controls are not human calibration.
 Keep reviewer-only examples out of the target packet.
 
+Record criterion validity separately from response performance in the review
+notes. A rejected or unresolved criterion cannot establish a target failure
+or success. Preserve the original when correcting it; newly added task
+requirements apply prospectively. See the
+[worked validity example and practitioner review path](../docs/reviewing-an-evaluation.md)
+for a manual decision record. These notes do not add fields to the evaluation
+schema or replace the review states already required by it.
+
 Review the complete collection against every requirement, criterion and
 family. Record exact exposure or a gap/exclusion with reasoning. Do not turn
 the number of generated cases into a coverage or performance claim.

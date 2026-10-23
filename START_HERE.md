@@ -67,6 +67,11 @@ Start with the overview. Check the rationale, then the criteria and their
 source support. A successful structural check is not an independent quality
 endorsement.
 
+Before using the results for a decision, follow
+[Review an evaluation](docs/reviewing-an-evaluation.md). It shows how to catch
+an unjustified criterion, preserve disputed judgments and record the action
+supported by the evidence.
+
 ## Reference inputs
 
 ```powershell

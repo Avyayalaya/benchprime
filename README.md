@@ -139,6 +139,11 @@ Use [Start here](START_HERE.md) for the input and output files,
 separate stages, and [the command reference](docs/getting-started.md) for
 preparation, validation, rendering and export.
 
+Before relying on the results, use the
+[practitioner review guide](docs/reviewing-an-evaluation.md). Its worked
+example shows a criterion that wrongly fails a valid answer, followed by
+a review path and copyable decision record.
+
 [Sample outputs](packs/README.md) and an
 [authored walkthrough](docs/walkthrough.md) are available as references.
 Their review limits are recorded with them.

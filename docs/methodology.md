@@ -59,6 +59,13 @@ an unresolved judgment and a criterion that does not apply. These labels have
 different meanings. Authored/model-proposed controls do not establish human
 calibration.
 
+Criterion validity and response performance need separate judgments. An
+unsupported check can fail a valid response even when its evidence pointer
+is mechanically correct. The
+[worked example and review guide](reviewing-an-evaluation.md) shows how to
+correct such a check, handle ambiguous requirements and preserve the original
+record without retroactively imposing a new standard.
+
 ## Separate coverage from performance
 
 Coverage records which declared requirements have cases and which remain

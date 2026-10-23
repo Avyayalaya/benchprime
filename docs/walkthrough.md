@@ -92,4 +92,9 @@ Download/open the HTML locally; GitHub displays HTML as source.
 For a larger example with prior model-generation evidence, inspect
 [Alder's collection overview](../packs/alder/v0.1/OVERVIEW.md).
 
+Before applying either collection to permitted responses, use the
+[practitioner review guide](reviewing-an-evaluation.md) to assess criterion
+validity and record a bounded decision. The walkthrough's proposed checks
+still require that review.
+
 To create from your own task, return to [Start here](../START_HERE.md).

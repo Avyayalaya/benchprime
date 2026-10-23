@@ -20,6 +20,7 @@ open source.
 | Complete derived fields | Draft with chosen evidence pointers | Bound evidence/hashes and disclosed deferred methods | `python -m benchprime prepare` |
 | Inspect and export | Valid collection-first pack | Counts; isolated candidate JSON/JSONL | `python -m benchprime inspect` / `export` |
 | Render | Valid pack | Offline HTML casebook | `python -m benchprime render` |
+| Review criteria and use results | Versioned task/sources, evaluation and permitted responses | Manual criterion-validity and decision record; no automated grading | `docs/reviewing-an-evaluation.md` |
 
 Run from this directory with Python 3.10+. Core commands use only the standard
 library. No provider credentials, network calls or target actions are needed.
