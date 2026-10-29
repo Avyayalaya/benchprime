@@ -1,8 +1,11 @@
-# Start with a real evaluation pack
+# Command reference
 
 **Creating your own evaluation?** Begin at [Start here](../START_HERE.md).
 It gives you a task workspace and an exact assistant kickoff.
-This page is the reference for inspecting and processing existing/generated packs.
+Use this page for individual operations on existing/generated packs.
+For the complete assisted creation path, see the
+[first-session guide](first-session.md); for another prompt or policy change,
+see [repeat use](reuse-an-evaluation.md).
 
 Use Python 3.10+ from the repository root. No installation, account or API key
 is needed for these commands. Windows accepts the relative paths below;
@@ -105,4 +108,5 @@ a failed check. The validator implements the documented schema subset, not
 a general JSON Schema engine.
 
 Run local checks with `python -m unittest discover -s tests -v`.
-See [evidence and limitations](evidence-and-limitations.md).
+See [evidence and limitations](evidence-and-limitations.md) and
+[repository change guidelines](../CONTRIBUTING.md).

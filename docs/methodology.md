@@ -1,88 +1,113 @@
-# Why the process has separate stages
+# The choices behind BenchPrime
 
-The process starts from the evaluation purpose and the requirements of what
-is being evaluated. The tools used to create or run it are a separate choice.
+I built the workflow around a simple requirement: an eval should withstand scrutiny.
+Why these cases? Why this expected behavior? What would make a different
+answer valid? Each stage makes one of those questions easier to examine.
 
-The [README](../README.md#how-the-evaluation-is-built) explains the sequence.
-The [workflow](../workflows/generate.md) contains the instructions the assistant
-follows. These notes explain the boundaries between the stages.
+The workflow separates decisions that are easy to blur together: understanding
+the job, choosing the cases, writing the criteria and judging the result.
+You can inspect each step and change a bad assumption before it spreads.
+The [README](../README.md#how-the-evaluation-is-built) summarizes the choices; the
+[workflow](../workflows/generate.md) gives your assistant the execution instructions.
 
-## Agree on the requirements before writing cases
+## Establish what the answer is actually required to do
 
-A task's rules determine what a response is required to do. Source documents
-can also contain observations, proposals, examples and preferences. Treating
-all of these as instructions can produce a test that demands the wrong thing.
+A source can contain a policy, a preference, an observation or a proposed
+change. Those roles need to stay explicit. Otherwise, the evaluation can turn
+"someone suggested this" into "the answer must do this."
 
-The profile and challenge passes read the same frozen task separately. Their
-findings are compared before the test plan is written. The source compiler
-checks the declared classifications and exact references. A person must still
-decide which rules have authority when the supplied material does not settle it.
+The profile and challenge passes read the same frozen brief separately, then
+their interpretations are reconciled. The compiler checks declared source
+roles and exact references. A reviewer still has to settle which rules govern
+the task when the material is ambiguous.
 
-The test categories describe requirements of the target. The generator's own
-quality checks describe whether the evaluation was built carefully. These
-are different questions and use different records.
+The evaluation's purpose and the system's instructions serve different jobs.
+"Help me choose between two models" is a reason to evaluate.
+It is not an extra requirement for either model's response.
 
-## Record what changes between cases
+## Map the job before multiplying the cases
 
-A comparison is useful when the changed input explains a difference in the
-expected behavior, or establishes that the behavior should stay the same.
-The case author states that relationship and the facts held constant.
+The collection should explain its categories before asking you to inspect
+individual cases. Each category needs a reason to exist, and each deeper
+branch needs to expose another meaningful distinction.
 
-Python checks the recorded JSON paths against the actual input differences.
-A single changed text field can contain several changed facts. Deciding
-whether the comparison isolates one factor therefore needs semantic review.
+The [design catalogue](../benchprime/patterns/design_principles.json) contains
+eleven responsibilities and ten guiding principles for designing the evaluation.
+The capabilities being evaluated come from your use case. A well-formed
+test suite can still miss the behavior that matters to you.
 
-## Keep the intended answer out of initial criterion writing
+<picture>
+  <source media="(max-width: 640px)" srcset="../assets/methodology-atlas-mobile.png">
+  <img src="../assets/methodology-atlas.png" alt="Eleven responsibilities for designing an evaluation, distinct from the capabilities being evaluated.">
+</picture>
 
-A case author already has a failure in mind. Passing that intended answer
-straight into the criteria-writing context can turn the criteria into a
-restatement of the author's assumption.
+## Use controlled changes to make a failure easier to explain
 
-The initial criteria writer receives one candidate's input in a separate
-context. It derives the expected behavior from those instructions and facts.
-A later reviewer can see both the case and the criteria and challenge the
-reasoning. A revision using that feedback is recorded as review-guided.
+A useful pair of cases shows what changed and why the expected answer
+should change or stay stable. When several facts change together, attributing
+the result to just one of them needs further evidence.
 
-This separation is managed by the assistant runtime or operator. The local
-commands do not create independent model sessions. Reusing one context must
-remain visible in the result's provenance.
+The local tools compare the recorded JSON paths with the actual input
+differences. That catches a mismatch in the files. Review still matters:
+one changed paragraph can contain three changed facts.
 
-## Check whether the criteria reject valid answers
+Include cases where the system should succeed, where stronger evidence
+changes the answer, and where two requirements interact. This gives a
+reviewer more to work with than a collection of difficult-looking questions.
 
-The review considers correct responses, valid alternatives and plausible
-mistakes. It checks whether each criterion applies and whether the source
-supports it. A stylistic preference should not become a correctness rule.
-Missing information can also change what a valid answer is able to establish.
+<picture>
+  <source media="(max-width: 640px)" srcset="../assets/methodology-depth-mobile.png">
+  <img src="../assets/methodology-depth.png" alt="From capability to distinction, failure mechanism and an observable difference; each deeper branch needs a reason to exist.">
+</picture>
 
-Internal control annotations distinguish a met criterion, a failed criterion,
-an unresolved judgment and a criterion that does not apply. These labels have
-different meanings. Authored/model-proposed controls do not establish human
-calibration.
+## Keep the intended answer out of the first criteria-writing pass
 
-Criterion validity and response performance need separate judgments. An
-unsupported check can fail a valid response even when its evidence pointer
-is mechanically correct. The
-[worked example and review guide](reviewing-an-evaluation.md) shows how to
-correct such a check, handle ambiguous requirements and preserve the original
-record without retroactively imposing a new standard.
+Designing a case around a failure creates an expectation.
+Handing that expectation to the criteria writer can make the key repeat
+the same assumption. The first pass therefore receives only one case's input
+and an opaque ID in a fresh context.
 
-## Separate coverage from performance
+A later reviewer sees both the case and the proposed criteria. Feedback can
+change either. A repair using that feedback is labelled **review-guided**, because
+the information available in that pass differs from the initial reading.
 
-Coverage records which declared requirements have cases and which remain
-untested. That tells the reviewer where the collection has gaps. Case counts,
-coverage entries and priority weights are not measurements of a target's
-success rate.
+Your assistant/runtime must manage those separate contexts. The Python tools
+do not create them. Work that shares a context throughout stays labelled
+**author-assisted**.
 
-The casebook presents the definitions. Candidate JSONL contains only the input
-for each target invocation. Actual target execution and response grading
-require a separate process.
+## Try to break the grading criteria before trusting them
 
-## Use structural checks for the things they can verify
+Try a competent alternative, a convincing mistake and a case where the check
+stops applying. A plausible expected answer alone leaves those weaknesses
+unexamined.
 
-The tools check field types, source text and hashes, identifiers, links,
-declared coverage and recorded case differences. These checks catch broken
-or inconsistent files.
+The [review guide](reviewing-an-evaluation.md) gives a concrete example:
+a task makes section references optional, but the proposed rubric requires
+them. The answer is valid. The check needs correcting.
 
-A reviewer still assesses source authority, the choice of scenarios and the
-correctness of the grading criteria. The review record should make any
-remaining uncertainty clear.
+Criterion validity and response performance need separate judgments. Correcting a
+bad check improves the evaluation; the target's output has not changed.
+Similarly, `met`, `not_met`, `unresolved` and `not_applicable` answer different
+questions. Collapsing them can hide the very problem the eval should reveal.
+Authored or model-proposed controls still need human calibration.
+
+<picture>
+  <source media="(max-width: 640px)" srcset="../assets/methodology-review-mobile.png">
+  <img src="../assets/methodology-review.png" alt="Case-only initial criteria writing followed by review of valid alternatives, mistakes, ambiguity and repairs.">
+</picture>
+
+## Make gaps and limits part of the result
+
+Every declared requirement gets a case or a named gap. Importance, severity
+and case allocation remain separate design choices. Performance requires
+actual target responses and judgments; a coverage map alone cannot establish it.
+
+Read the evaluation as HTML or inspect the JSON, with a separate
+export of candidate inputs. That lets you use your own runner while keeping
+the answer key out of the test.
+
+The tools verify file structure, source quotations and hashes, references,
+declared coverage and recorded differences. A person still decides whether
+the tests are useful and the criteria are fair. The
+[evidence page](evidence-and-limitations.md) records where the current examples
+stand on those questions.

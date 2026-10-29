@@ -1,157 +1,156 @@
-<!--
-THESIS: Make the reasoning behind evaluation design visible inside the README.
-OWN-WORLD: Plain GitHub documentation, neutral paper, navy branching maps and short paragraphs.
-STORY: Map the design responsibilities, deepen useful distinctions, then challenge the evaluation.
-FIRST VIEWPORT: What this is, what it produces and the command to begin.
-FORM: Three connected methodology maps extending the existing surface; examples remain references.
--->
-
 # BenchPrime
 
-### Create evals for the purpose and use case you define.
+**Turn a task into cases, grading criteria and a clear view of what remains untested.**
 
-**BenchPrime is an evaluation-creation system.** Start with what you want to
-learn, compare or decide, and what you are evaluating. BenchPrime works
-through what to test, builds the cases and defines how the results should
-be judged.
+An eval should help explain where a system fails and what to change next.
+I built BenchPrime around that job. Bring the task, its rules and permitted
+sources; use your AI assistant to create an evaluation you can inspect,
+challenge and export.
 
-The purpose shapes the test design. The use case supplies the requirements
-and context. You get test cases, grading criteria and a record of what the
-evaluation covers and leaves open.
+**[Inspect an example](examples/meeting-actions/README.md)** ·
+**[Create your own](START_HERE.md)** ·
+**[Explore the design](docs/methodology.md)**
 
-**[Start with your task](START_HERE.md)** ·
-**[Read the full workflow](workflows/generate.md)** ·
-**[Command reference](docs/getting-started.md)**
+## Test whether the action was actually agreed
 
-## Use the current local package
+Suppose a meeting assistant turns notes into a follow-up list:
 
-This repository packages one way to use BenchPrime: an assistant-led workflow
-with Python tools for checking and exporting files. Use an AI assistant with
-local file access and Python 3.10+ for this route.
+> Maya: Could we send the pricing brief Friday?<br>
+> Leo: I'll check the cost figures by Thursday.
+
+The rule is to list only explicitly accepted future actions. An answer that
+assigns Maya the pricing brief for Friday invents a commitment.
+
+**A valid result, authored for this illustration:**
+
+```json
+{
+  "actions": [
+    {
+      "task": "Check the cost figures",
+      "owner": "Leo",
+      "due": "Thursday"
+    }
+  ]
+}
+```
+
+The evaluation should also accept equivalent wording such as “Verify the
+cost figures”. A rubric that requires one exact task phrase would reject
+a valid answer.
+
+That gives the collection useful distinctions to test:
+
+| Change in the notes | What the check should establish |
+|---|---|
+| A suggestion becomes an explicit commitment | The action list should change. |
+| An accepted task has no stated deadline | The answer should preserve the missing value, using `null` under this task's policy. |
+| Work is already complete | It should stay out of the future-action list. |
+
+![Actual meeting-actions casebook: source notes, proposed checks and the evidence behind them](assets/meeting-actions-case.png)
+
+This is the actual casebook produced by the local renderer from the
+[authored fictional example](examples/meeting-actions/README.md). Its criteria
+are proposed and its gaps are recorded. The displayed answer is an
+illustration, not a model-run result.
+Unresolved conditional commitments remain an explicit gap in this small collection.
+
+## Inspect the output without a model
+
+From a full checkout of this repository, with Python 3.10+:
+
+```powershell
+python -m benchprime inspect examples/meeting-actions/evaluation.json
+python -m benchprime render examples/meeting-actions/evaluation.json --output work/meeting-demo/casebook.html
+```
+
+Open `work/meeting-demo/casebook.html` locally. Browse the plan, cases,
+criteria and gaps; download candidate inputs without the grading material.
+These commands process a supplied evaluation and make no model calls.
+GitHub shows HTML as source, so download/open the file for the interactive view.
+
+The [ticket-routing walkthrough](docs/walkthrough.md) and
+[larger Alder collection](packs/alder/v0.1/OVERVIEW.md) show other task shapes.
+The method follows your requirements; the current formats cover English
+text and JSON.
+
+## Create an evaluation for your own task
 
 ```powershell
 python -m benchprime start work/my-eval
 ```
 
-Describe the task in `work/my-eval/task.md`, add the sources it may use, and
-paste `work/my-eval/KICKOFF.md` into the assistant. The command creates the
-workspace. The assistant then follows the process below using its normal
-model runtime.
+Describe the job in `task.md`, add permitted sources, then give `KICKOFF.md`
+to a file-capable assistant opened on this checkout. **The first output is
+a test plan for your review.** Approve its scope before continuing to cases,
+criteria, `evaluation.json`, a casebook and candidate-only JSONL.
+
+The default path is an **assisted draft**. The
+[first-session guide](docs/first-session.md) specifies the handoffs, optional
+separate-context route and recovery steps. The assistant does the generation;
+Python checks the files. Your assistant's normal costs and data policies apply.
 
 ## How the evaluation is built
 
-### Map the decisions the evaluation needs to support
+**Start from the decision.** Explain why each category and case belongs.
+Source rules, preferences and descriptive facts carry different authority.
 
-The use case supplies the capabilities being tested. BenchPrime's eleven
-design responsibilities examine the evaluation itself: its intent, grounding,
-coverage, scenarios, standards, measurement and usefulness over time.
+**Make differences meaningful.** Record what changed between related cases,
+what stayed fixed and why the expected behavior should change or remain stable.
+
+**Challenge the grading criteria.** Test valid alternatives, convincing
+mistakes and applicability. A criterion can quote a source perfectly and
+still invent an obligation.
+
+**Leave gaps visible.** Every declared requirement leads to a case or a
+named gap. Coverage describes the test design; actual responses and judgments
+establish performance.
+
+The [methodology](docs/methodology.md) explains the reasoning and the
+[creation workflow](workflows/generate.md) gives the assistant exact stages.
+
+<details>
+<summary>Explore the three methodology maps</summary>
+
+The first map separates responsibilities for designing a good evaluation
+from the capabilities being evaluated. The second follows a capability
+down to a testable distinction. The third shows how to challenge the key.
 
 <picture>
   <source media="(max-width: 640px)" srcset="assets/methodology-atlas-mobile.png">
-  <img src="assets/methodology-atlas.png" alt="Eleven evaluation-design responsibilities form three connected groups: intent, boundary and grounding; coverage, scenarios, acceptable behavior and measurement; usability, generation quality, dependable delivery and revision. Source authority constrains criteria; controlled differences constrain diagnosis; review can reopen coverage.">
+  <img src="assets/methodology-atlas.png" alt="Eleven responsibilities for evaluation design, grouped into intent and grounding, coverage and measurement, and delivery and revision.">
 </picture>
-
-Start by reading the requirements twice, in separate contexts, and reconcile
-the findings. A source may contain a governing rule, a preference, a recorded
-fact or an instruction for the evaluation's creator. Its role determines what
-it can justify. Unsettled authority stays an open question.
-
-Before individual cases, show the collection's scope, categories and why they
-were chosen. Connect them to principles and task-specific dimensions, then
-lay out themes and scenario groups. The
-[design catalogue](benchprime/patterns/design_principles.json) records the
-eleven responsibilities and ten guiding principles.
-
-### Deepen each capability until a test can distinguish the failure
-
-Build breadth first, then follow consequential branches:
-**capability → distinction → failure mechanism → observable difference**.
-Ask which conditions change a valid outcome, what evidence is available,
-and which requirements depend on each other.
 
 <picture>
   <source media="(max-width: 640px)" srcset="assets/methodology-depth-mobile.png">
-  <img src="assets/methodology-depth.png" alt="An illustrative capability branches into authority, information and dependencies. Each branch separates potential failure mechanisms and proposes a controlled input change. Each contrast records whether behavior should change or remain stable. Interactions receive their own tests; repeated distinctions or unjustified deeper splits become explicit stopping points or gaps.">
+  <img src="assets/methodology-depth.png" alt="Follow a capability through a distinction, failure mechanism and observable difference; record repeated or unsupported branches as stopping points or gaps.">
 </picture>
-
-Each retained scenario must reveal something useful. A comparison records
-what changed, what stayed fixed and why the expected behavior should change
-or remain stable. A single changed text field can contain several changed
-facts; causal isolation still needs review.
-
-Include clear-success and stronger-evidence cases alongside stress cases.
-Check combinations where one requirement changes how another applies.
-Stop splitting when the next branch repeats a distinction or cannot be
-justified with available evidence, and record the gap.
-
-### Challenge the grading criteria with answers that could fool them
-
-The first criteria writer receives only one case's input and an opaque ID.
-The author's intended answer, family label and failure hypothesis stay outside
-that initial read. Each proposed criterion needs evidence, applicability and
-acceptable alternatives.
 
 <picture>
   <source media="(max-width: 640px)" srcset="assets/methodology-review-mobile.png">
-  <img src="assets/methodology-review.png" alt="The case packet goes to a separate criteria-writing context. A later reviewer sees the case and proposed criteria, checking competent answers, valid alternatives, plausible mistakes and ambiguous responses. Feedback can revise either the case or its criteria. Met, not met, unresolved and not applicable remain distinct review annotations.">
+  <img src="assets/methodology-review.png" alt="Derive criteria from one case input, then review valid alternatives, plausible mistakes and uncertainty; preserve review-guided revisions.">
 </picture>
 
-The reviewer then challenges both the case and its criteria. Would a valid
-alternative fail? Could a plausible mistake pass? Does the criterion apply
-when information is missing? Review can send the work back to either artifact.
-Revisions using that feedback are recorded as **review-guided**.
+</details>
 
-Separate contexts are an operator/runtime responsibility. A shared-context
-run remains **author-assisted**. Proposed controls help examine the criteria;
-they do not establish human calibration.
+## Use it on the next change
 
-### Make coverage and remaining uncertainty inspectable
+Keep the accepted evaluation fixed when comparing implementations of the
+same task. Revise it when the governing rules or source facts change.
+The [repeat-use guide](docs/reuse-an-evaluation.md) connects exports, your
+approved runner, response records and a decision. Those execution and
+grading steps remain separate from this package.
 
-Trace each declared requirement to a case or an explicit gap. Keep importance,
-failure severity and case allocation separate. These describe design choices;
-actual target runs and grading establish performance.
+## Current scope
 
-Export the evaluation definition, HTML casebook and candidate-only inputs.
-Keep criteria and reviewer notes outside the material supplied to what is
-being evaluated. The [methodology notes](docs/methodology.md) explain these
-boundaries in detail.
+This is a developer preview with working local file tools and inspectable
+examples. Useful case selection and fair criteria still need review.
+The CLI does not enforce fresh contexts or create target responses.
+Label shared-context work **author-assisted** and feedback-based repairs
+**review-guided**. Independent practitioner value and superiority over
+another generator remain unproven.
 
-## What the tools check
-
-The scripts can check whether a quoted passage matches the case input, whether
-an ID points to an existing case, and whether every declared requirement has
-a coverage entry. They reject inconsistent files and refuse output overwrites.
-
-Judging whether a test is useful or a criterion is correct still requires
-review. The assistant runtime or operator manages the separate contexts.
-When a single context is used throughout, the result must say that it was
-author-assisted.
-
-Running the target and scoring its responses are separate steps. This
-repository currently provides one guided creation route and local file tools.
-The evaluation purpose, the subject being evaluated and the tools used to
-create or run the evaluation are separate choices.
-
-## Files and further detail
-
-Use [Start here](START_HERE.md) for the input and output files,
-[the methodology notes](docs/methodology.md) for the reasoning behind the
-separate stages, and [the command reference](docs/getting-started.md) for
-preparation, validation, rendering and export.
-
-Before relying on the results, use the
-[practitioner review guide](docs/reviewing-an-evaluation.md). Its worked
-example shows a criterion that wrongly fails a valid answer, followed by
-a review path and copyable decision record.
-
-[Sample outputs](packs/README.md) and an
-[authored walkthrough](docs/walkthrough.md) are available as references.
-Their review limits are recorded with them.
-
-The bundled input formats and examples currently use English text. Other
-formats and execution systems need appropriate support; those implementation
-limits are separate from BenchPrime's purpose as an eval-creation system.
-This is a developer preview. No reuse license has been selected; public
-visibility does not grant an open-source license.
-See [evidence and limitations](docs/evidence-and-limitations.md) and
-[release status](RELEASE_STATUS.json).
+[MIT licensed](LICENSE), including the original documentation, assets and
+fictional examples. Keep the copyright and permission notice when reusing
+them. See [evidence and limitations](docs/evidence-and-limitations.md),
+[release status](RELEASE_STATUS.json) and the [command reference](docs/getting-started.md).

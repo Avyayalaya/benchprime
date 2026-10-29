@@ -1,19 +1,21 @@
 # Review an evaluation before relying on its results
 
-Use this guide when an evaluation will inform an output review, a model or
-prompt comparison, or another workflow decision. Start with the task, its
-permitted sources and the proposed evaluation. Obtain any target responses
-through a separately agreed process; this guide does not run a target.
+Two questions matter before acting on an eval: is the check fair,
+and does the answer meet it? Combining those questions can make a flaw in
+the rubric look like a flaw in the system.
 
-The outcome is a review record: which criteria are justified, what the
-responses show, what remains unsettled and what action follows. The local
-tools check evaluation files. People still need to review their meaning.
+Work through them separately and keep the evidence with the decision.
+Bring the original task, permitted sources and proposed evaluation.
+If you have outputs to review, keep the instructions they were produced
+under. Obtain or run those outputs through your own approved process.
+This is a manual review guide; the local tools check the evaluation files.
 
 ## 1. Agree on the decision and preserve the original requirements
 
-Name the decision and who can make it. Examples include accepting an output,
-revising a prompt, or adding a check before the next workflow change.
-State the scope and important behaviors the collection does not cover.
+Start with the action the result could change: accepting an output,
+revising a prompt or adding a check before the next workflow change.
+Name the person who can make that decision and the behaviors this collection
+leaves untested.
 
 Keep the task instructions, source versions, evaluation version and output
 versions together. For existing outputs, use the requirements that actually
@@ -23,7 +25,7 @@ Do not infer permission to process material from its public availability.
 
 ## 2. Review the criteria before judging responses
 
-For each criterion, ask:
+Ask four things of each proposed criterion:
 
 - Which target-visible rule or fact supports it?
 - Is it mandatory, a preference, or a diagnostic observation?
@@ -31,9 +33,9 @@ For each criterion, ask:
 - Could a competent alternative satisfy the task and fail this check?
 
 Record the criterion as **accepted**, **rejected** or **unresolved** in your
-review notes. These are assessments of the check itself, separate from the
-response judgment. A frozen criterion is a versioned proposal; freezing it
-does not make its interpretation correct.
+review notes. This records whether the check is justified. The response gets
+its own judgment later. Freezing a version makes it traceable; it still needs
+to earn your agreement.
 
 Correct or remove a demonstrably unsupported check in a new evaluation
 version, retaining the original and the reason. Leave uncertain authority
@@ -44,8 +46,9 @@ known not to hold.
 
 ## Worked example: the check is too strict
 
-This is an authored fictional illustration, including the proposed bad check
-and response. It is not a recorded generator run or a calibrated test case.
+This fictional example shows how a plausible check can fail a valid
+answer. The bad check and response were authored for illustration; no
+generator or target was run to produce them, and they have no calibration claim.
 
 ### Task supplied to the respondent
 
@@ -73,8 +76,9 @@ explicitly makes those references optional. The response uses two bullets,
 names the source for each, distinguishes completion from a scheduled action
 and adds no facts. It satisfies this small task.
 
-**Reject the check as written.** A source quote can be copied accurately
-while the criterion draws an unsupported obligation from it.
+**Reject the check as written.** The source is clear about what is
+optional. Adding a stricter rule would penalize a response that followed
+the task.
 
 Replace the citation check with:
 
@@ -86,7 +90,7 @@ wording and the new evaluation version. Review the correction before use.
 Other requirements, such as factual support and the bullet limit, remain
 separate checks.
 
-Two useful controls make the distinction clearer:
+Test the corrected check against these two variations:
 
 | Variation | Judgment under the supplied task |
 |---|---|
@@ -95,7 +99,7 @@ Two useful controls make the distinction clearer:
 
 ### If the instruction itself is ambiguous
 
-Suppose a task instead says only, "Include document/section references,"
+Suppose another task says only, "Include document/section references,"
 with no other citation rule. It does not settle whether document-only
 references are acceptable or sections are required.
 
@@ -107,7 +111,7 @@ Other justified checks can still establish a separate reason to revise.
 
 ## 3. Apply accepted checks and keep evidence with the judgment
 
-Keep the criteria fixed for the review version. For each accepted check,
+Keep the criteria fixed for each review version. For each accepted check,
 record `met`, `not_met`, `not_applicable`, or `unresolved`, with a source or
 output excerpt explaining the judgment. Mark unfinished work **not reviewed**;
 missing review is different from a reviewed question that remains unsettled.
@@ -126,9 +130,9 @@ Do not report that correction as an improvement in the target's performance.
 | Required checks have not been reviewed | Continue the review. Do not treat missing judgments as success. |
 | Required review is complete, applicable mandatory checks are met and no decision-critical uncertainty remains | Ready for the owner's decision within the declared scope. This is not blanket production clearance. |
 
-Case count and an average score cannot resolve an invalid criterion, a
-mandatory failure or an important coverage gap. State what this evaluation
-allows the owner to conclude and what remains outside its scope.
+Name the action the result supports and the uncertainty it
+leaves behind. An average score can hide a failed mandatory requirement;
+a large case count can hide a coverage gap. Keep both visible in the decision.
 
 ### Copyable review record
 
@@ -158,7 +162,9 @@ worksheet, grade meaning or authorize the resulting action.
 
 ## 5. Observe whether the evaluation is useful
 
-For a practitioner trial, save the person's initial decision before showing
+The practical test is whether someone uses the evaluation to
+change an action or adopts a justified check for the next item. For a trial,
+save the person's initial decision before showing
 the criteria or diagnostic examples. Both passes need the same task, visible
 requirements and sources. Record any prior exposure or facilitator help;
 someone who already knows the worked answer is not a blind reviewer.
@@ -167,18 +173,22 @@ After the criteria-assisted review, record a concrete correction or hold,
 an adopted check, the effort required and the next item where it will be used.
 If the original decision was already sound, record that too.
 
-A second reading or facilitator help can explain a changed judgment. One
-walkthrough does not establish causal improvement, broad accuracy or demand.
-Observe the next actual use before claiming repeat value.
+Record the extra work the review creates. A second reading or
+facilitator help can explain a changed judgment, so one walkthrough cannot
+establish causal improvement, broad accuracy or demand. Observe the next
+actual use before claiming repeat value.
 
 ## Quality Check
 
-All instructions and facts needed to inspect the fictional example appear
-above. It demonstrates an unsupported obligation, a valid alternative, a
-genuine factual failure and a separately ambiguous rule. These authored
-illustrations are neither independent calibration nor performance evidence.
-No target execution, data-sharing permission or automated decision is implied.
+The fictional task, source, response and flawed check appear together
+so you can inspect the reasoning. The examples distinguish an unsupported
+obligation, a valid alternative, a genuine factual failure and an ambiguous
+rule. They illustrate the review method; independent calibration and target
+performance remain unmeasured. Data permissions and execution decisions
+remain yours to establish separately.
 
 Return to [Start here](../START_HERE.md), the
 [creation workflow](../workflows/generate.md) or the
-[ticket-triage walkthrough](walkthrough.md).
+[ticket-triage walkthrough](walkthrough.md). For a subsequent comparison,
+use [the repeat-use guide](reuse-an-evaluation.md) to keep task, evaluation
+and response versions separate.

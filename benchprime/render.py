@@ -252,6 +252,13 @@ def searchable_text(case, dimensions):
     return json.dumps(readable, ensure_ascii=False).lower()
 
 
+def extra_observation_sections(case):
+    for key, value in case["input"]["case"]["observations"].items():
+        if key != "documents":
+            text = value if isinstance(value, str) else json.dumps(value, ensure_ascii=False, indent=2)
+            yield key.replace("_", " ").capitalize(), text
+
+
 def case_markdown(case, family=None):
     lines = [f"# {md(case['title'])}", "", f"**Case:** {md(case['id'])} | **Track:** {md(case['track'])}",
              "", md(case["input"]["case"]["request"]), "", "## Expected behavior"]
@@ -265,6 +272,8 @@ def case_markdown(case, family=None):
     lines += ["", "## Source notes"]
     for doc in case["input"]["case"]["observations"].get("documents", []):
         lines += ["", f"### {md(doc['id'])} — {md(doc['title'])}", md(doc["text"])]
+    for title, text in extra_observation_sections(case):
+        lines += ["", f"### {md(title)}", md(text)]
     lines += ["", "## Task rules", *[f"{i}. {md(p)}" for i, p in enumerate(case["input"]["context"]["policy"], 1)]]
     if family:
         lines += ["", "## Why this family belongs", md(family.get("selection_reason", family["mechanism"]))]
@@ -363,9 +372,8 @@ def render_html(model, *, standalone_inputs=None):
         task = case["input"]["case"]["request"]
         purpose = family.get("selection_reason", family["mechanism"])
         limits = "".join(f"<li>{esc(p['limit'])}</li>" for p in family["contrasts"])
-        extra_input = {k: v for k, v in case["input"]["case"]["observations"].items() if k != "documents"}
-        if extra_input:
-            source_html += f'<pre>{esc(json.dumps(extra_input,ensure_ascii=False,indent=2))}</pre>'
+        for title, text in extra_observation_sections(case):
+            source_html += f'<h4>{esc(title)}</h4><pre>{esc(text)}</pre>'
         case_download = f'href="cases/{stem(case["id"])}.md"'
         if standalone:
             case_download = download_attributes(case_markdown(case, family), stem(case["id"]) + ".md",
@@ -378,7 +386,7 @@ def render_html(model, *, standalone_inputs=None):
                         f'{source_html}<details><summary>Instructions used with this input</summary><ol>{policies}</ol>'
                         f'<p>{esc(case["input"]["context"]["tool_boundary"])}</p></details></div>'
                         f'<h4>What a good response must do</h4><ol class="checks">{"".join(rules)}</ol>'
-                        '<p class="meta">Apply any collection-wide rules listed on Start here. Different wording is welcome when the meaning is preserved.</p>'
+                        f'<p class="meta">Apply any collection-wide rules listed on <a href="#overview">{esc(tabs[0][1])}</a>. Different wording is welcome when the meaning is preserved.</p>'
                         f'<details><summary>Compare with the related test</summary>'
                         f'{comparisons}<p>Related case: {related}</p></details>'
                         f'<details><summary>Test limits and technical details</summary><ul>{limits}</ul>'

@@ -204,6 +204,42 @@ class CommandTests(unittest.TestCase):
         self.assertIn("EXECUTIVE_DESIGN_BRIEF.docx", links)
         self.assertTrue(any(url.startswith("cases/") for url in links))
 
+    def test_collection_help_links_to_the_visible_overview_tab(self):
+        output = self.work / "help.html"
+        self.call("render", SAMPLE, "--output", output)
+        text = output.read_text(encoding="utf-8")
+        self.assertIn('rules listed on <a href="#overview">Overview</a>', text)
+        self.assertNotIn("rules listed on Start here.", text)
+
+    def test_legacy_help_uses_the_visible_start_here_label(self):
+        from benchprime import design, render
+        model = design.project(self.pack)
+        model.pop("collection")
+        text = render.render_html(model)
+        self.assertIn('rules listed on <a href="#overview">Start here</a>', text)
+
+    def test_text_observations_are_readable_and_html_escaped(self):
+        from benchprime import design, render
+        model = design.project(self.pack)
+        observations = model["cases"][0]["input"]["case"]["observations"]
+        observations["meeting_notes"] = "First speaker: <script>unsafe</script>\nSecond speaker: agreed."
+        observations["extra_values"] = {"number": 2, "label": "<unsafe>"}
+        text = render.render_html(model)
+        self.assertIn("<h4>Meeting notes</h4><pre>First speaker: &lt;script&gt;unsafe&lt;/script&gt;\nSecond speaker: agreed.</pre>", text)
+        self.assertIn("<h4>Extra values</h4><pre>", text)
+        self.assertIn("&lt;unsafe&gt;", text)
+        self.assertNotIn("<script>unsafe</script>", text)
+
+    def test_markdown_source_notes_include_non_document_observations(self):
+        from benchprime import design, render
+        model = design.project(self.pack)
+        case = model["cases"][0]
+        case["input"]["case"]["observations"]["meeting_notes"] = "One: proposed.\nTwo: <agreed>."
+        case["input"]["case"]["observations"]["extra_values"] = {"number": 2}
+        source_section = render.case_markdown(case).split("## Source notes", 1)[1].split("## Task rules", 1)[0]
+        self.assertIn("### Meeting notes\nOne: proposed.\nTwo: &lt;agreed&gt;.", source_section)
+        self.assertIn('### Extra values\n{\n  "number": 2\n}', source_section)
+
     def test_freeze_validates_typed_intake_and_computes_hashes(self):
         output = self.work / "brief.json"
         self.call("freeze", ROOT / "examples" / "alder-intake.json", "--output", output)
@@ -243,6 +279,11 @@ class CommandTests(unittest.TestCase):
         self.assertIn("casebook.html", kickoff)
         self.assertIn("purpose and use case", kickoff)
         self.assertNotIn("coding assistant", kickoff)
+        self.assertIn("docs/first-session.md", kickoff)
+        self.assertIn("STOP after this design checkpoint", kickoff)
+        self.assertIn("Do not write cases or criteria until I approve", kickoff)
+        self.assertIn("Default to author-assisted provenance", kickoff)
+        self.assertIn("not a software-enforced pause or isolation gate", kickoff)
 
     def test_start_from_task_preserves_exact_text(self):
         task = self.work / "original.md"

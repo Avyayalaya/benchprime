@@ -1,86 +1,71 @@
-# Create an evaluation for your purpose and use case
+# Get to a useful evaluation
 
-First define what you want the evaluation to establish and what you are
-evaluating. The steps below use the local route supplied in this repository:
-an AI assistant that can read files and run Python. That is one way to operate
-BenchPrime. The evaluation's subject and purpose are chosen separately.
-Model use follows your assistant's normal costs and data policies.
+Start by inspecting a complete example, or go straight to your own task.
+The local tools use Python 3.10+ from a full repository checkout.
 
-## 1. Start a workspace
+## Inspect an example without a model
 
-From the repository root:
+The [meeting-actions example](examples/meeting-actions/README.md) starts with
+a familiar mistake: treating a suggestion in meeting notes as an agreed action.
+Read its sources, proposed checks, acceptable alternatives and gaps.
+
+```powershell
+python -m benchprime inspect examples/meeting-actions/evaluation.json
+python -m benchprime render examples/meeting-actions/evaluation.json --output work/meeting-demo/casebook.html
+```
+
+Open `work/meeting-demo/casebook.html` in a browser. These commands process an
+already-authored example; they make no model calls. The HTML embeds case
+downloads and candidate-only JSONL, so it works without a server or sibling
+files. GitHub displays HTML as source; download/open it locally.
+
+Use a new output path on a repeat run. Commands refuse overwrites.
+
+## Create an evaluation for your own task
 
 ```powershell
 python -m benchprime start work/my-eval
 ```
 
-This creates:
+This creates `task.md`, `sources/` and `KICKOFF.md`. Describe the job, what
+you want to learn or decide, the rules it must follow and which material it
+can use. Identify source roles and processing rights.
 
-```text
-work/my-eval/
-  task.md
-  KICKOFF.md
-  sources/
-```
+Paste the generated kickoff into a file-capable assistant opened on this
+checkout. It asks for **`collection-design.md` first, then a stop for your
+review**. The first decision is whether the test plan covers the behaviors
+that matter. Cases and criteria follow after you approve that plan.
 
-State the evaluation purpose, the subject or use case, and the requirements
-in `task.md`.
-Add sources and say which contain rules, facts or examples. State what you
-have permission to process. The assistant should ask for missing information
-when it changes the requirements or what counts as a correct answer.
+The [first-session guide](docs/first-session.md) gives a concrete local
+Copilot setup, the continuation message, optional manual context handoffs
+and recovery steps. The default route is an **assisted draft**. Your assistant's
+normal costs and data policies apply; the CLI neither runs the model nor
+enforces conversation isolation.
 
-Already have a task file?
-
-```powershell
-python -m benchprime start work/my-eval --task my-task.md
-```
-
-Use a new directory name if one exists. The command never overwrites a prior
-workspace and does not make model calls.
-
-## 2. Give your assistant the kickoff
-
-Paste the contents of `work/my-eval/KICKOFF.md` into the assistant opened on
-this repository. The kickoff names your task, the workflow and the output
-directory. It tells the assistant to write the JSON files and run the commands.
-
-The assistant first lists and checks the requirements. It then plans the test
-categories, writes cases, derives grading criteria and reviews the result.
-You supply the task's rules and settle questions the source material cannot
-answer. You also review whether the final cases and criteria fit the task.
-
-The workflow uses fresh contexts for blind work when available. If those
-contexts cannot be established, the work must remain explicitly author-assisted.
-The Python tools do not enforce assistant isolation or certify the judgments.
-
-## 3. Inspect the result
-
-The expected artifacts in your workspace are:
-
-- `collection-design.md`: what needs testing, why each category exists and what is still missing.
-- `evaluation.json`: cases, grading criteria, sources, coverage and review status.
-- `casebook.html`: a standalone browser view with embedded per-case Markdown and candidate-only JSONL downloads.
-- `candidates.jsonl`: the inputs to send to the target, with grading material excluded.
-- A review summary: changes made, assistance used and unresolved issues.
-
-Start with the overview. Check the rationale, then the criteria and their
-source support. A successful structural check is not an independent quality
-endorsement.
-
-Before using the results for a decision, follow
-[Review an evaluation](docs/reviewing-an-evaluation.md). It shows how to catch
-an unjustified criterion, preserve disputed judgments and record the action
-supported by the evidence.
-
-## Reference inputs
+To supply an existing task or start from the example's task:
 
 ```powershell
-python -m benchprime start work/routing-demo --from-intake examples/ticket-triage/intake.json
+python -m benchprime start work/custom-eval --task my-task.md
+python -m benchprime start work/meeting-design --from-intake examples/meeting-actions/intake.json
 ```
 
-This copies the declared task and sources into an editable workspace. It
-does not generate cases. Follow [the worked creation](docs/walkthrough.md)
-to inspect an explicitly authored result and replay its offline processing.
+These commands create workspaces. They do not generate cases or authorize
+processing private material.
 
-No hosted account or BenchPrime provider configuration is required.
-Do not submit private data to your assistant without appropriate permission.
+## Inspect what comes back
+
+| File | What to look for |
+|---|---|
+| `collection-design.md` | Why each category belongs; intended contrasts and gaps |
+| `evaluation.json` | Cases, criteria, source evidence, alternatives and actual review state |
+| `casebook.html` | Readable overview and case details, with embedded downloads |
+| `candidates.jsonl` | Only case IDs and inputs for a separately approved target process |
+| Review summary | Changes made, help/context exposure and unresolved findings |
+
+Start with one case. Check whether a valid answer could fail its rubric,
+then inspect the whole collection's coverage. Structural validity is only
+one part of that review.
+
+Use [Review an evaluation](docs/reviewing-an-evaluation.md) for the judgment
+record and [Use it on the next change](docs/reuse-an-evaluation.md) for repeat use.
+The [command reference](docs/getting-started.md) covers individual operations.

@@ -36,4 +36,4 @@ Categories connect to principles and target dimensions. Themes organize scenario
 
 Fictional, development-exposed and operator-assisted. Five criteria, six comparison descriptions and two titles were corrected after model review; candidate inputs are unchanged. The five criteria remain proposed. No independent human calibration or target performance is claimed.
 
-The portable package preserves the input/criterion objects. Its provenance and private release status remain explicit. See [provenance](provenance.json).
+The portable package preserves the input/criterion objects. Its [provenance](provenance.json) retains the historical private-development state. The original fictional pack is now covered by the repository's [MIT license](../../../LICENSE); that grant does not change its review status or establish target performance.

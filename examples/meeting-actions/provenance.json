@@ -1,0 +1,47 @@
+{
+  "kind": "authored_example",
+  "authorship": "AI-assisted authoring in one context with a user-supplied hero excerpt.",
+  "authoring_contexts": 1,
+  "package_version": "0.1.0.dev6",
+  "license": "MIT",
+  "source_rights": "Original synthetic policy and notes, with authored criteria and response illustrations; MIT licensed.",
+  "source_authority": {
+    "policy": "normative",
+    "meeting_notes": "descriptive"
+  },
+  "counts": {
+    "tests": 6,
+    "checks": 17,
+    "categories": 3,
+    "populated_categories": 3,
+    "themes": 5,
+    "populated_themes": 4,
+    "scenarios": 3,
+    "requirements": 5,
+    "exposed_requirements": 4,
+    "gap_requirements": 1,
+    "excluded_requirements": 0
+  },
+  "authored_response_illustrations": 6,
+  "authored_review_probes": 2,
+  "independent_calibration": false,
+  "blind_generation_claimed": false,
+  "live_generation_claimed": false,
+  "provider_calls": 0,
+  "target_executed": false,
+  "public_intended": true,
+  "public_release_authorized": false,
+  "mechanical_preparation": {
+    "bound_fields": 114,
+    "deferred_patterns": 14
+  },
+  "intake_sha256": "59e75f9d21a336cae1912dad2388b5822d33ac39a641a42b954802920c1cfe81",
+  "evaluation_sha256": "be59edd7e2ccb86928fe9c7f64a927f241864d9a123629e0cb1c229d4a427850",
+  "limitations": [
+    "Original fictional example authored in one AI context; cases, criteria and illustrative responses were created together.",
+    "All criteria are proposed. No independent review, semantic calibration, target output or live-generation result is claimed.",
+    "Unresolved conditional commitments are an explicit coverage gap.",
+    "No coverage claim for long meetings, conflicting assignments, revocations, repeated tasks, embedded instructions or calendar normalization.",
+    "The no-external-actions policy is visible; tool-enabled enforcement is not exercised."
+  ]
+}

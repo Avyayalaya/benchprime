@@ -18,11 +18,18 @@ the generated kickoff. The assistant owns the internal JSON, references and
 commands below. Show the collection overview before case details; do not
 require the user to learn every schema to receive first value.
 
-Continue to a reviewable draft unless essential authority, rights or facts
-are missing. Keep uncertainty explicit. Ask only questions that change what
-is valid. Preserve the operator-managed context-isolation boundary; if fresh
-contexts are unavailable, record that limitation and use author-assisted
-provenance rather than claiming blind/independent review.
+The generated kickoff stops after the collection-design checkpoint for the
+user to review. Write the design and proposed source/authority interpretation;
+do not continue to cases or criteria until that scope is approved. After
+approval, continue to a reviewable draft unless essential authority, rights
+or facts are missing. This is an instruction to the assistant, not a
+software-enforced pause.
+
+Use [the first-session guide](../docs/first-session.md) for the assisted route
+and optional manual context handoffs. Default to author-assisted provenance.
+Keep uncertainty explicit and ask only questions that change what is valid.
+Record actual context exposure; fresh or blind work requires established
+separation. A new turn alone does not provide it.
 
 ## 1. Establish the job and authority
 
@@ -188,6 +195,9 @@ silently replace wrong evidence or edit sources to make a key pass.
 Report what is delivered, what was operator/model-assisted, remaining gaps,
 whether any target was executed (this workflow does not execute one), and
 which decisions the evaluation can and cannot support.
+For a subsequent model, prompt or policy change, follow
+[the repeat-use guide](../docs/reuse-an-evaluation.md). It distinguishes
+fixed-task comparisons from a changed evaluation contract.
 
 ## Isolation and review limits
 

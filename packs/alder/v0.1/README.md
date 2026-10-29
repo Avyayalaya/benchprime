@@ -31,5 +31,8 @@ Candidate-only records are also in `delivery/run/CANDIDATE_INPUTS.jsonl`.
 Only the `input` field belongs in the target's context. Keep evaluator material
 separate and do not treat fictional requests as permission for real actions.
 
-Source rights currently cover private development. Public licensing and
-sharing remain pending; preserve this version while the release is reviewed.
+This original fictional pack is covered by the repository's
+[MIT license](../../../LICENSE). The intake and provenance retain their
+historical private-development wording; those records do not describe the
+current distribution license. Preserve the original records and check new
+source permissions when adapting the pack.
