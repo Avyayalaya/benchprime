@@ -1,133 +1,60 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="440" height="1790" viewBox="0 0 440 1790" role="img" aria-labelledby="title description">
-<title id="title">Eleven responsibilities shape the evaluation</title><desc id="description">A design map of the eleven generator responsibilities, distinct from target-specific capabilities. The three groups organize the reading; they are not a fixed execution order.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="1005" viewBox="0 0 440 1005" role="img" aria-labelledby="title description">
+<title id="title">Start with the decision the eval must support.</title><desc id="description">Design backward from a decision to needed evidence, then to cases and criteria. The meeting-actions example illustrates the relationship; target execution and grading remain separate from BenchPrime&#x27;s local file tools.</desc>
 <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#17324d"/></marker></defs>
-<rect width="440" height="1790" fill="#f5f7f9"/>
+<rect width="440" height="1005" fill="#ffffff"/>
 <g font-family="Segoe UI, Arial, sans-serif">
-<text x="32" y="55" font-size="28" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="360">
-<tspan x="32" y="55">Eleven responsibilities</tspan>
-<tspan x="32" y="91">shape the evaluation.</tspan>
+<text x="32" y="52" font-size="29" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="376">
+<tspan x="32" y="52">Start with the decision</tspan>
+<tspan x="32" y="89">the eval must support.</tspan>
 </text>
-<text x="32" y="138" font-size="18" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="360">
-<tspan x="32" y="138">Questions about the design of the</tspan>
-<tspan x="32" y="161">evaluation itself.</tspan>
+<text x="32" y="127" font-size="18" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="376">
+<tspan x="32" y="127">Work backward from the choice to the</tspan>
+<tspan x="32" y="150">tests.</tspan>
 </text>
-<text x="56" y="215" font-size="23" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="350">
-<tspan x="56" y="215">Frame the evaluation</tspan>
+<text x="32" y="184" font-size="17" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="376">
+<tspan x="32" y="184">Meeting-actions illustration</tspan>
 </text>
-<path d="M38 249V447" fill="none" stroke="#8b9aa8" stroke-width="2"/>
-<circle cx="38" cy="254" r="5" fill="#f5f7f9" stroke="#17324d" stroke-width="2" data-dimension="D01"/>
-<text x="56" y="261" font-size="22" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="350">
-<tspan x="56" y="261">Evaluation intent</tspan>
+<text x="32" y="235" font-size="28" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="376">
+<tspan x="32" y="235">Decision</tspan>
 </text>
-<text x="56" y="290" font-size="18" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="350">
-<tspan x="56" y="290">Which decision, whose stakes, and</tspan>
-<tspan x="56" y="313">which exclusions?</tspan>
+<text x="32" y="275" font-size="21" font-weight="400" fill="#17324d" text-anchor="start" data-max-width="376">
+<tspan x="32" y="275">What would make you</tspan>
+<tspan x="32" y="302">choose differently?</tspan>
 </text>
-<circle cx="38" cy="346" r="5" fill="#f5f7f9" stroke="#17324d" stroke-width="2" data-dimension="D02"/>
-<text x="56" y="353" font-size="22" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="350">
-<tspan x="56" y="353">Boundary and context</tspan>
+<text x="32" y="338" font-size="20" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="376">
+<tspan x="32" y="338">Can we trust the action list?</tspan>
 </text>
-<text x="56" y="382" font-size="18" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="350">
-<tspan x="56" y="382">What can be observed? What state or</tspan>
-<tspan x="56" y="405">access is missing?</tspan>
+<path d="M48 361V412" fill="none" stroke="#17324d" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="32" y="445" font-size="28" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="376">
+<tspan x="32" y="445">Evidence</tspan>
 </text>
-<circle cx="38" cy="438" r="5" fill="#f5f7f9" stroke="#17324d" stroke-width="2" data-dimension="D03"/>
-<text x="56" y="445" font-size="22" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="350">
-<tspan x="56" y="445">Domain grounding</tspan>
+<text x="32" y="485" font-size="21" font-weight="400" fill="#17324d" text-anchor="start" data-max-width="376">
+<tspan x="32" y="485">What evidence would</tspan>
+<tspan x="32" y="512">justify that choice?</tspan>
 </text>
-<text x="56" y="474" font-size="18" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="350">
-<tspan x="56" y="474">Which sources have authority? Where</tspan>
-<tspan x="56" y="497">does expertise run out?</tspan>
+<text x="32" y="548" font-size="20" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="376">
+<tspan x="32" y="548">Accepted commitments,</tspan>
+<tspan x="32" y="574">without invented ones.</tspan>
 </text>
-<text x="56" y="567" font-size="23" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="350">
-<tspan x="56" y="567">Design the tests</tspan>
+<path d="M48 597V622" fill="none" stroke="#17324d" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="32" y="655" font-size="28" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="376">
+<tspan x="32" y="655">Tests</tspan>
 </text>
-<path d="M38 601V891" fill="none" stroke="#8b9aa8" stroke-width="2"/>
-<circle cx="38" cy="606" r="5" fill="#f5f7f9" stroke="#17324d" stroke-width="2" data-dimension="D04"/>
-<text x="56" y="613" font-size="22" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="350">
-<tspan x="56" y="613">Coverage and depth</tspan>
+<text x="32" y="695" font-size="21" font-weight="400" fill="#17324d" text-anchor="start" data-max-width="376">
+<tspan x="32" y="695">Which tests could</tspan>
+<tspan x="32" y="722">produce that evidence?</tspan>
 </text>
-<text x="56" y="642" font-size="18" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="350">
-<tspan x="56" y="642">Which distinctions, interactions and</tspan>
-<tspan x="56" y="665">omissions matter?</tspan>
+<text x="32" y="758" font-size="20" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="376">
+<tspan x="32" y="758">Contrast a proposal</tspan>
+<tspan x="32" y="784">with a commitment.</tspan>
 </text>
-<circle cx="38" cy="698" r="5" fill="#f5f7f9" stroke="#17324d" stroke-width="2" data-dimension="D05"/>
-<text x="56" y="705" font-size="22" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="350">
-<tspan x="56" y="705">Scenario quality</tspan>
+<path d="M32 840H408" fill="none" stroke="#8b9aa8" stroke-width="1"/>
+<text x="32" y="875" font-size="20" font-weight="400" fill="#17324d" text-anchor="start" data-max-width="376">
+<tspan x="32" y="875">A plan describes coverage.</tspan>
+<tspan x="32" y="901">Actual responses supply evidence.</tspan>
 </text>
-<text x="56" y="734" font-size="18" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="350">
-<tspan x="56" y="734">Is the world coherent? What</tspan>
-<tspan x="56" y="757">information is available?</tspan>
-</text>
-<circle cx="38" cy="790" r="5" fill="#f5f7f9" stroke="#17324d" stroke-width="2" data-dimension="D06"/>
-<text x="56" y="797" font-size="22" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="350">
-<tspan x="56" y="797">Acceptable behavior</tspan>
-</text>
-<text x="56" y="826" font-size="18" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="350">
-<tspan x="56" y="826">Which outcomes and alternatives count</tspan>
-<tspan x="56" y="849">as valid?</tspan>
-</text>
-<circle cx="38" cy="882" r="5" fill="#f5f7f9" stroke="#17324d" stroke-width="2" data-dimension="D07"/>
-<text x="56" y="889" font-size="22" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="350">
-<tspan x="56" y="889">Measurement</tspan>
-</text>
-<text x="56" y="918" font-size="18" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="350">
-<tspan x="56" y="918">What can be observed, and what can it</tspan>
-<tspan x="56" y="941">establish?</tspan>
-</text>
-<text x="56" y="1011" font-size="23" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="350">
-<tspan x="56" y="1011">Use and improve it</tspan>
-</text>
-<path d="M38 1045V1335" fill="none" stroke="#8b9aa8" stroke-width="2"/>
-<circle cx="38" cy="1050" r="5" fill="#f5f7f9" stroke="#17324d" stroke-width="2" data-dimension="D08"/>
-<text x="56" y="1057" font-size="22" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="350">
-<tspan x="56" y="1057">Usability</tspan>
-</text>
-<text x="56" y="1086" font-size="18" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="350">
-<tspan x="56" y="1086">Can someone inspect, adapt and use the</tspan>
-<tspan x="56" y="1109">evaluation?</tspan>
-</text>
-<circle cx="38" cy="1142" r="5" fill="#f5f7f9" stroke="#17324d" stroke-width="2" data-dimension="D09"/>
-<text x="56" y="1149" font-size="22" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="350">
-<tspan x="56" y="1149">Generation quality</tspan>
-</text>
-<text x="56" y="1178" font-size="18" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="350">
-<tspan x="56" y="1178">Why was each test retained? What</tspan>
-<tspan x="56" y="1201">assistance was needed?</tspan>
-</text>
-<circle cx="38" cy="1234" r="5" fill="#f5f7f9" stroke="#17324d" stroke-width="2" data-dimension="D10"/>
-<text x="56" y="1241" font-size="22" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="350">
-<tspan x="56" y="1241">Dependable delivery</tspan>
-</text>
-<text x="56" y="1270" font-size="18" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="350">
-<tspan x="56" y="1270">Are versions, partial states, effects</tspan>
-<tspan x="56" y="1293">and resources explicit?</tspan>
-</text>
-<circle cx="38" cy="1326" r="5" fill="#f5f7f9" stroke="#17324d" stroke-width="2" data-dimension="D11"/>
-<text x="56" y="1333" font-size="22" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="350">
-<tspan x="56" y="1333">Revision and learning</tspan>
-</text>
-<text x="56" y="1362" font-size="18" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="350">
-<tspan x="56" y="1362">What changed or was exposed? When</tspan>
-<tspan x="56" y="1385">should a test be revised?</tspan>
-</text>
-<path d="M32 1455H408" fill="none" stroke="#8b9aa8" stroke-width="2"/>
-<text x="32" y="1485" font-size="23" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="360">
-<tspan x="32" y="1485">The relationships matter too.</tspan>
-</text>
-<path d="M32 1523h25" fill="none" stroke="#17324d" stroke-width="2" marker-end="url(#arrow)"/>
-<text x="72" y="1530" font-size="18" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="336">
-<tspan x="72" y="1530">Source authority constrains what a</tspan>
-<tspan x="72" y="1553">grading criterion can require.</tspan>
-</text>
-<path d="M32 1602h25" fill="none" stroke="#17324d" stroke-width="2" marker-end="url(#arrow)"/>
-<text x="72" y="1609" font-size="18" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="336">
-<tspan x="72" y="1609">Controlled differences constrain</tspan>
-<tspan x="72" y="1632">what a result can diagnose.</tspan>
-</text>
-<path d="M32 1681h25" fill="none" stroke="#17324d" stroke-width="2" marker-end="url(#arrow)"/>
-<text x="72" y="1688" font-size="18" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="336">
-<tspan x="72" y="1688">Review findings can reopen cases,</tspan>
-<tspan x="72" y="1711">criteria or coverage.</tspan>
+<text x="32" y="946" font-size="18" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="376">
+<tspan x="32" y="946">Run and grade with your own approved</tspan>
+<tspan x="32" y="969">process.</tspan>
 </text>
 </g></svg>

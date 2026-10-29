@@ -10,6 +10,21 @@ You can inspect each step and change a bad assumption before it spreads.
 The [README](../README.md#how-the-evaluation-is-built) summarizes the choices; the
 [workflow](../workflows/generate.md) gives your assistant the execution instructions.
 
+## Work backward from the decision
+
+Start with the choice the evaluation should support. Decide what evidence would
+justify changing your mind, then design cases and criteria that can produce it.
+This keeps a large collection from becoming an end in itself.
+
+<picture>
+  <source media="(max-width: 640px)" srcset="../assets/methodology-atlas-mobile.png">
+  <img src="../assets/methodology-atlas.png" alt="Work backward from a decision to needed evidence, then to tests; actual responses and grading remain separate.">
+</picture>
+
+The figures explain design choices. They are original illustrations and contain
+no measured performance results. BenchPrime prepares the evaluation; execution and grading
+use your separately approved process.
+
 ## Establish what the answer is actually required to do
 
 A source can contain a policy, a preference, an observation or a proposed
@@ -36,11 +51,6 @@ eleven responsibilities and ten guiding principles for designing the evaluation.
 The capabilities being evaluated come from your use case. A well-formed
 test suite can still miss the behavior that matters to you.
 
-<picture>
-  <source media="(max-width: 640px)" srcset="../assets/methodology-atlas-mobile.png">
-  <img src="../assets/methodology-atlas.png" alt="Eleven responsibilities for designing an evaluation, distinct from the capabilities being evaluated.">
-</picture>
-
 ## Use controlled changes to make a failure easier to explain
 
 A useful pair of cases shows what changed and why the expected answer
@@ -57,7 +67,7 @@ reviewer more to work with than a collection of difficult-looking questions.
 
 <picture>
   <source media="(max-width: 640px)" srcset="../assets/methodology-depth-mobile.png">
-  <img src="../assets/methodology-depth.png" alt="From capability to distinction, failure mechanism and an observable difference; each deeper branch needs a reason to exist.">
+  <img src="../assets/methodology-depth.png" alt="Two illustrative contrasts: different wording can preserve a valid answer, while a changed commitment changes the required action.">
 </picture>
 
 ## Keep the intended answer out of the first criteria-writing pass
@@ -91,9 +101,14 @@ Similarly, `met`, `not_met`, `unresolved` and `not_applicable` answer different
 questions. Collapsing them can hide the very problem the eval should reveal.
 Authored or model-proposed controls still need human calibration.
 
+Assess each check against the requirement it measures. A JSON-format check can
+pass an answer that invents an action; the commitment check must catch that
+error. Agreement on one probe is one observation. More probes are needed to
+judge whether the criterion is sound.
+
 <picture>
   <source media="(max-width: 640px)" srcset="../assets/methodology-review-mobile.png">
-  <img src="../assets/methodology-review.png" alt="Case-only initial criteria writing followed by review of valid alternatives, mistakes, ambiguity and repairs.">
+  <img src="../assets/methodology-review.png" alt="Test a check against the requirement it measures: passing a violation or rejecting a response that meets that requirement warrants inspection.">
 </picture>
 
 ## Make gaps and limits part of the result

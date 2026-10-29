@@ -75,7 +75,8 @@ class ReaderJourneyTests(unittest.TestCase):
         self.assertLess(text.index("examples/meeting-actions/README.md"),
                         text.index("## How the evaluation is built"))
         self.assertIn("authored fictional", text)
-        self.assertIn("not a model-run result", text)
+        self.assertIn("authored notes and proposed checks", text)
+        self.assertIn("No target model was run.", text)
         headings = re.findall(r"^(#{1,6})\s+", prose(ROOT / "README.md"), re.M)
         for previous, current in zip(headings, headings[1:]):
             self.assertLessEqual(len(current), len(previous) + 1)
@@ -87,6 +88,19 @@ class ReaderJourneyTests(unittest.TestCase):
         method = MapDisclosure((ROOT / "docs" / "methodology.md").read_text(encoding="utf-8"))
         self.assertEqual(len(method.maps), 3)
         self.assertTrue(all(alt for _, alt in method.maps))
+
+    def test_readme_has_one_primary_start_and_early_product_output(self):
+        text = (ROOT / "README.md").read_text(encoding="utf-8")
+        first_link = re.search(r"\]\(([^)]+)\)", text).group(1)
+        self.assertEqual(first_link, "START_HERE.md")
+        self.assertLess(text.index("assets/meeting-actions-case.png"), text.index("```"))
+        visible = re.sub(r"<details>.*?</details>", "", prose(ROOT / "README.md"), flags=re.S)
+        visible = re.sub(r"<[^>]+>", "", visible)
+        self.assertLessEqual(len(visible.split()), 450)
+        start = (ROOT / "START_HERE.md").read_text(encoding="utf-8")
+        headings = re.findall(r"^## [123]\. (.+)$", start, re.M)
+        self.assertEqual(headings, ["Describe the job", "Review the test plan",
+                                    "Build and inspect the evaluation"])
 
     def test_first_and_repeat_use_boundaries_remain_explicit(self):
         first = (ROOT / "docs" / "first-session.md").read_text(encoding="utf-8")

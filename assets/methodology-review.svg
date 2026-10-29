@@ -1,82 +1,67 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1050" viewBox="0 0 1080 1050" role="img" aria-labelledby="title description">
-<title id="title">The grading criteria get their own challenge</title><desc id="description">Only a case input and opaque ID enter the initial criteria-writing context. A later reviewer sees the case and criteria, challenges them with multiple response types, and can send either artifact back for a labelled review-guided revision. Separate contexts must be managed by the operator or runtime.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="696" viewBox="0 0 1080 696" role="img" aria-labelledby="title description">
+<title id="title">Your rubric needs tests too.</title><desc id="description">Illustrative review matrix scoped to one requirement. A response can satisfy this requirement while failing another. Test whether this criterion rejects a response that meets its requirement or passes one that violates it. These review probes contain no measured target performance.</desc>
 <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#17324d"/></marker></defs>
-<rect width="1080" height="1050" fill="#f5f7f9"/>
+<rect width="1080" height="696" fill="#ffffff"/>
 <g font-family="Segoe UI, Arial, sans-serif">
-<text x="48" y="55" font-size="32" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="984">
-<tspan x="48" y="55">The grading criteria get their own challenge.</tspan>
+<text x="48" y="64" font-size="36" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="984">
+<tspan x="48" y="64">Your rubric needs tests too.</tspan>
 </text>
-<text x="48" y="98" font-size="21" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="984">
-<tspan x="48" y="98">Separate the first reading. Then challenge both artifacts.</tspan>
+<text x="48" y="102" font-size="21" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="984">
+<tspan x="48" y="102">Judge each response against the requirement this check covers.</tspan>
 </text>
-<path d="M215 420V444H440V652" fill="none" stroke="#17324d" stroke-width="2" marker-end="url(#arrow)"/>
-<path d="M845 555V730H780" fill="none" stroke="#17324d" stroke-width="2" marker-end="url(#arrow)"/>
-<path d="M300 775H20V250H60" fill="none" stroke="#8b9aa8" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#arrow)"/>
-<path d="M780 775H1060V250H1020" fill="none" stroke="#8b9aa8" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#arrow)"/>
-<rect x="60" y="200" width="330" height="220" rx="3" fill="#ffffff" stroke="#8b9aa8"/>
-<text x="86" y="247" font-size="27" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="280">
-<tspan x="86" y="247">Case packet</tspan>
+<rect x="650" y="204" width="350" height="140" fill="#edf1f4"/>
+<rect x="300" y="344" width="350" height="140" fill="#edf1f4"/>
+<path d="M300 204H1000" fill="none" stroke="#8b9aa8" stroke-width="1"/>
+<path d="M300 204V484" fill="none" stroke="#8b9aa8" stroke-width="1"/>
+<path d="M300 344H1000" fill="none" stroke="#8b9aa8" stroke-width="1"/>
+<path d="M650 204V484" fill="none" stroke="#8b9aa8" stroke-width="1"/>
+<path d="M300 484H1000" fill="none" stroke="#8b9aa8" stroke-width="1"/>
+<path d="M1000 204V484" fill="none" stroke="#8b9aa8" stroke-width="1"/>
+<text x="650" y="150" font-size="20" font-weight="400" fill="#485b6d" text-anchor="middle" data-max-width="700">
+<tspan x="650" y="150">Proposed check</tspan>
 </text>
-<text x="86" y="300" font-size="22" font-weight="400" fill="#17324d" text-anchor="start" data-max-width="280">
-<tspan x="86" y="300">Instructions + facts</tspan>
+<text x="475.0" y="186" font-size="24" font-weight="600" fill="#17324d" text-anchor="middle" data-max-width="300">
+<tspan x="475.0" y="186">Pass</tspan>
 </text>
-<text x="86" y="343" font-size="22" font-weight="400" fill="#17324d" text-anchor="start" data-max-width="280">
-<tspan x="86" y="343">One candidate input</tspan>
+<text x="825.0" y="186" font-size="24" font-weight="600" fill="#17324d" text-anchor="middle" data-max-width="300">
+<tspan x="825.0" y="186">Fail</tspan>
 </text>
-<path d="M390 310H658" fill="none" stroke="#17324d" stroke-width="2" marker-end="url(#arrow)"/>
-<text x="520" y="270" font-size="19" font-weight="600" fill="#17324d" text-anchor="middle" data-max-width="240">
-<tspan x="520" y="270">Case input + opaque ID</tspan>
+<text x="48" y="268" font-size="25" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="220">
+<tspan x="48" y="268">Meets the</tspan>
+<tspan x="48" y="300">requirement</tspan>
 </text>
-<rect x="670" y="200" width="350" height="220" rx="3" fill="#ffffff" stroke="#8b9aa8"/>
-<text x="696" y="247" font-size="27" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="300">
-<tspan x="696" y="247">Criteria writer</tspan>
+<text x="48" y="408" font-size="25" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="220">
+<tspan x="48" y="408">Violates the</tspan>
+<tspan x="48" y="440">requirement</tspan>
 </text>
-<text x="696" y="292" font-size="21" font-weight="400" fill="#17324d" text-anchor="start" data-max-width="300">
-<tspan x="696" y="292">A separate case-only context</tspan>
+<text x="475.0" y="284" font-size="24" font-weight="400" fill="#17324d" text-anchor="middle" data-max-width="310">
+<tspan x="475.0" y="284">Expected pass</tspan>
 </text>
-<text x="696" y="356" font-size="20" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="300">
-<tspan x="696" y="356">Evidence, applicability,</tspan>
-<tspan x="696" y="382">acceptable alternatives</tspan>
+<text x="825.0" y="272" font-size="25" font-weight="600" fill="#17324d" text-anchor="middle" data-max-width="310">
+<tspan x="825.0" y="272">Wrong rejection</tspan>
 </text>
-<text x="86" y="499" font-size="22" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="300">
-<tspan x="86" y="499">Author-only context</tspan>
+<text x="825.0" y="311" font-size="18" font-weight="400" fill="#485b6d" text-anchor="middle" data-max-width="310">
+<tspan x="825.0" y="311">Inspect the criterion</tspan>
 </text>
-<text x="86" y="538" font-size="20" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="295">
-<tspan x="86" y="538">Family, hypothesis and</tspan>
-<tspan x="86" y="564">preferred answer stay</tspan>
-<tspan x="86" y="590">outside the first criteria</tspan>
-<tspan x="86" y="616">read.</tspan>
+<text x="475.0" y="412" font-size="25" font-weight="600" fill="#17324d" text-anchor="middle" data-max-width="310">
+<tspan x="475.0" y="412">Missed error</tspan>
 </text>
-<path d="M845 420V480" fill="none" stroke="#17324d" stroke-width="2" marker-end="url(#arrow)"/>
-<text x="845" y="526" font-size="23" font-weight="600" fill="#17324d" text-anchor="middle" data-max-width="320">
-<tspan x="845" y="526">Proposed criteria</tspan>
+<text x="475.0" y="451" font-size="18" font-weight="400" fill="#485b6d" text-anchor="middle" data-max-width="310">
+<tspan x="475.0" y="451">Inspect the criterion</tspan>
 </text>
-<rect x="300" y="665" width="480" height="155" rx="3" fill="#ffffff" stroke="#8b9aa8"/>
-<text x="326" y="707" font-size="24" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="430">
-<tspan x="326" y="707">Review case + criteria together</tspan>
+<text x="825.0" y="424" font-size="24" font-weight="400" fill="#17324d" text-anchor="middle" data-max-width="310">
+<tspan x="825.0" y="424">Expected fail</tspan>
 </text>
-<text x="326" y="753" font-size="20" font-weight="400" fill="#17324d" text-anchor="start" data-max-width="220">
-<tspan x="326" y="753">Competent answer</tspan>
-<tspan x="326" y="779">Plausible mistake</tspan>
+<text x="48" y="542" font-size="23" font-weight="400" fill="#17324d" text-anchor="start" data-max-width="984">
+<tspan x="48" y="542">Challenge this requirement with valid alternatives and targeted mistakes.</tspan>
 </text>
-<text x="565" y="753" font-size="20" font-weight="400" fill="#17324d" text-anchor="start" data-max-width="210">
-<tspan x="565" y="753">Valid alternative</tspan>
-<tspan x="565" y="779">Ambiguous response</tspan>
+<text x="48" y="580" font-size="20" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="984">
+<tspan x="48" y="580">Other requirements need their own checks.</tspan>
 </text>
-<text x="61" y="861" font-size="20" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="210">
-<tspan x="61" y="861">Revise case</tspan>
+<text x="48" y="618" font-size="20" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="984">
+<tspan x="48" y="618">Keep uncertain applicability unresolved.</tspan>
 </text>
-<text x="815" y="861" font-size="20" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="225">
-<tspan x="815" y="861">Revise criteria</tspan>
-</text>
-<text x="540" y="868" font-size="19" font-weight="400" fill="#485b6d" text-anchor="middle" data-max-width="500">
-<tspan x="540" y="868">Dashed paths record review-guided revision.</tspan>
-</text>
-<path d="M48 915H1032" fill="none" stroke="#8b9aa8" stroke-width="2"/>
-<text x="48" y="955" font-size="25" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="984">
-<tspan x="48" y="955">Keep review outcomes distinct.</tspan>
-</text>
-<text x="48" y="1002" font-size="23" font-weight="400" fill="#17324d" text-anchor="start" data-max-width="984">
-<tspan x="48" y="1002">Met  /  Not met  /  Unresolved  /  Does not apply</tspan>
+<text x="48" y="660" font-size="18" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="984">
+<tspan x="48" y="660">Illustrative review outcomes. No performance measurement.</tspan>
 </text>
 </g></svg>
