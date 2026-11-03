@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080" role="img" aria-labelledby="title description">
+<title id="title">Both wordings satisfy
+the task requirement.</title><desc id="description">Check and Verify are acceptable alternatives when task meaning, owner and due date agree.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#17324d"/></marker></defs>
+<rect width="1080" height="1080" fill="#ffffff"/>
+<g font-family="Segoe UI, Arial, sans-serif">
+<text x="64" y="110" font-size="54" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="952">
+<tspan x="64" y="110">Both wordings satisfy</tspan>
+<tspan x="64" y="179">the task requirement.</tspan>
+</text>
+<path d="M64 980H1016" fill="none" stroke="#8b9aa8" stroke-width="1"/>
+<text x="64" y="1024" font-size="25" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="952">
+<tspan x="64" y="1024">BenchPrime | Fictional authored example | No target run</tspan>
+</text>
+<text x="64" y="340" font-size="48" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="952">
+<tspan x="64" y="340">&quot;Check the cost figures&quot;</tspan>
+</text>
+<text x="64" y="480" font-size="48" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="952">
+<tspan x="64" y="480">&quot;Verify the cost figures&quot;</tspan>
+</text>
+<path d="M64 610H1016" fill="none" stroke="#8b9aa8" stroke-width="1"/>
+<text x="64" y="700" font-size="36" font-weight="400" fill="#17324d" text-anchor="start" data-max-width="952">
+<tspan x="64" y="700">The task has the same meaning.</tspan>
+<tspan x="64" y="746">Owner: Leo.</tspan>
+<tspan x="64" y="792">Deadline: Thursday.</tspan>
+</text>
+<text x="64" y="905" font-size="28" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="952">
+<tspan x="64" y="905">Policy A5 permits equivalent task wording.</tspan>
+</text>
+</g></svg>

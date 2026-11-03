@@ -1,7 +1,8 @@
 # Your first creation session
 
-The first useful output is a test plan you can question. Once the plan fits
-the job, continue to cases, criteria and a casebook.
+**[Start Here](../START_HERE.md)** is the complete first-use path: setup, a
+filled-in task example, both messages and the approval questions. This page
+covers alternative inputs, optional separated contexts and recovery.
 
 ## Use a concrete local setup
 
@@ -31,11 +32,20 @@ python -m benchprime start work/my-eval
 
 Fill `work/my-eval/task.md`, add permitted sources, and paste
 `work/my-eval/KICKOFF.md` into the assistant. For a supplied task, you can
-start from the new [meeting-actions intake](../examples/meeting-actions/intake.json):
+start from the [meeting-actions intake](../examples/meeting-actions/intake.json):
 
 ```powershell
 python -m benchprime start work/meeting-design --from-intake examples/meeting-actions/intake.json
 ```
+
+This copies the original typed file to `imported-intake.json` unchanged.
+`task.md` is an editable summary, with a pointer to that import and source files.
+Review the input shape, identity and provenance as well as the human summary.
+If the task changes, preserve the import and author a new current intake before
+freezing; the original is evidence, not an automatic override of your edits.
+
+For a plain task file, use `--task path/to/task.md` instead. It copies that file;
+you still need to supply its permitted source files in the new workspace.
 
 The kickoff asks the assistant to **stop after `collection-design.md`**.
 That file should state:

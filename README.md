@@ -1,47 +1,66 @@
 # BenchPrime
 
-**Create evals for the work you need AI to do.**
+**Create evaluations for your AI workflows.**
 
-Describe the task, provide its rules and add permitted sources. BenchPrime
-guides your AI assistant through a test plan, cases and grading criteria,
-then turns them into files you can inspect and use.
+An eval needs a clear definition of good output. The cases should cover
+situations that matter, and the criteria should distinguish a real error
+from a valid answer.
 
-**[Create your first evaluation](START_HERE.md)** &nbsp; [See an example](examples/meeting-actions/README.md)
+I built BenchPrime to develop those cases and criteria with an AI assistant.
+You provide the task, rules and sources. It proposes a test plan for review
+before writing the cases. Each check includes its supporting evidence, and
+gaps remain explicit.
 
-![Actual meeting-actions casebook: source notes, proposed checks and the evidence behind them](assets/meeting-actions-case.png)
+**[Read the six-case example](examples/meeting-actions/README.md)** &nbsp; [Create an evaluation for your task](START_HERE.md)
 
-*An actual casebook from the authored fictional meeting-actions example.
-It contains authored notes and proposed checks. No target model was run.*
+## Example: extracting actions from meeting notes
 
-## From your task to an evaluation
+The meeting-notes example tests which tasks belong in an action list. Under
+its policy, an accepted commitment qualifies; a suggestion alone doesn't.
 
-| You bring | You get |
+| The notes say | Under this example's policy |
 |---|---|
-| The job your AI should do | A test plan with categories, scenarios and reasons for including them |
-| The rules and sources it must follow | Cases and proposed checks tied to those requirements |
-| The decision you need to make | A readable casebook, candidate inputs and explicit coverage gaps |
+| Maya: "Could we send the pricing brief Friday?" | Leave the unaccepted proposal out of the action list. |
+| Maya: "I'll send the pricing brief Friday." | Include Maya's commitment, due Friday. |
+| Leo: "I'll check the cost figures by Thursday." | Accept "Check" or "Verify" when they preserve the same task, owner and deadline. |
 
-Use Python 3.10+ from a full checkout:
+These are alternative excerpts. The commitment changes the expected action
+list. "Check" and "Verify" can preserve the same task, owner and deadline.
+
+![Actual meeting-actions casebook: source notes, proposed checks and their supporting evidence](assets/meeting-actions-case.png)
+
+*Actual output from the authored fictional example: authored notes and proposed checks.
+No target model was run.*
+
+## Build an evaluation for your task
+
+Define the job and its requirements, add permitted sources, and decide what
+the evaluation should help you compare.
+
+| You receive | Use it to |
+|---|---|
+| A readable casebook | Inspect inputs, proposed checks and the evidence behind them |
+| Candidate JSON/JSONL | Take the isolated inputs to your own runner |
+| A versioned definition and gaps | Challenge the criteria and see what remains untested |
+
+Creation needs Python 3.10+, a full checkout and a file-capable assistant.
+Its normal costs and data policies apply.
 
 ```powershell
 python -m benchprime start work/my-eval
 ```
 
-Fill in the generated `task.md`, add your sources, and give `KICKOFF.md` to a
-file-capable assistant. **Review the test plan before it creates the cases.**
-The [first-session guide](docs/first-session.md) walks through the handoff.
+**[Start Here](START_HERE.md)** contains both messages and the review checkpoint.
+**[Agent instructions](AGENTS.md)** provide the operational contract.
 
-## How the evaluation is built
+<a id="how-the-evaluation-is-built"></a>
 
-I built BenchPrime to make the reasoning behind an evaluation visible:
-why these cases, why these checks, and what is still missing.
+## How the cases are designed
 
-- **Test meaningful differences.** A proposed meeting action and an accepted
-  commitment should produce different results.
-- **Allow valid alternatives.** "Verify the cost figures" can satisfy the
-  same requirement as "Check the cost figures."
-- **Keep gaps visible.** The small meeting example leaves conditional
-  commitments untested. A coverage gap stays a gap.
+The plan explains why each case belongs. Review checks for missing scenarios,
+unsupported criteria and valid answers that could be rejected.
+The six-case example has seventeen proposed checks. Conditional commitments
+remain untested.
 
 [Read the methodology](docs/methodology.md) or
 [learn how to challenge a grading criterion](docs/reviewing-an-evaluation.md).
@@ -83,4 +102,5 @@ use your own approved process. Criteria need review, and shared-context work
 remains author-assisted. Independent practitioner value is unproven.
 
 [MIT license](LICENSE) · [Evidence and limitations](docs/evidence-and-limitations.md) ·
-[Command reference](docs/getting-started.md) · [Release status](RELEASE_STATUS.json)
+[Command reference](docs/getting-started.md) · [Release notes](docs/release-notes.md) ·
+[Release status](RELEASE_STATUS.json)

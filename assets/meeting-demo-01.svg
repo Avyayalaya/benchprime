@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080" role="img" aria-labelledby="title description">
+<title id="title">The task is to extract
+agreed actions.</title><desc id="description">The MA-001 fictional notes contain one proposal and one accepted task.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#17324d"/></marker></defs>
+<rect width="1080" height="1080" fill="#ffffff"/>
+<g font-family="Segoe UI, Arial, sans-serif">
+<text x="64" y="110" font-size="54" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="952">
+<tspan x="64" y="110">The task is to extract</tspan>
+<tspan x="64" y="179">agreed actions.</tspan>
+</text>
+<path d="M64 980H1016" fill="none" stroke="#8b9aa8" stroke-width="1"/>
+<text x="64" y="1024" font-size="25" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="952">
+<tspan x="64" y="1024">BenchPrime | Fictional authored example | No target run</tspan>
+</text>
+<text x="64" y="320" font-size="30" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="968">
+<tspan x="64" y="320">Maya</tspan>
+</text>
+<text x="64" y="380" font-size="43" font-weight="400" fill="#17324d" text-anchor="start" data-max-width="930">
+<tspan x="64" y="380">&quot;Could we send the pricing brief Friday?&quot;</tspan>
+</text>
+<text x="64" y="585" font-size="30" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="968">
+<tspan x="64" y="585">Leo</tspan>
+</text>
+<text x="64" y="645" font-size="43" font-weight="400" fill="#17324d" text-anchor="start" data-max-width="930">
+<tspan x="64" y="645">&quot;I&#x27;ll check the cost figures by Thursday.&quot;</tspan>
+</text>
+<text x="64" y="860" font-size="34" font-weight="400" fill="#17324d" text-anchor="start" data-max-width="952">
+<tspan x="64" y="860">The policy includes agreed future actions.</tspan>
+</text>
+</g></svg>

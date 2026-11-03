@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080" role="img" aria-labelledby="title description">
+<title id="title">Maya commits to the task
+in the second case.</title><desc id="description">MA-002 is an alternative scenario: Maya commits, while Leo&#x27;s task stays fixed.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#17324d"/></marker></defs>
+<rect width="1080" height="1080" fill="#ffffff"/>
+<g font-family="Segoe UI, Arial, sans-serif">
+<text x="64" y="110" font-size="54" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="952">
+<tspan x="64" y="110">Maya commits to the task</tspan>
+<tspan x="64" y="179">in the second case.</tspan>
+</text>
+<path d="M64 980H1016" fill="none" stroke="#8b9aa8" stroke-width="1"/>
+<text x="64" y="1024" font-size="25" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="952">
+<tspan x="64" y="1024">BenchPrime | Fictional authored example | No target run</tspan>
+</text>
+<text x="64" y="310" font-size="42" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="952">
+<tspan x="64" y="310">Maya: &quot;I&#x27;ll send the pricing brief Friday.&quot;</tspan>
+</text>
+<text x="64" y="475" font-size="28" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="952">
+<tspan x="64" y="475">Authored expected actions</tspan>
+</text>
+<text x="64" y="550" font-size="39" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="952">
+<tspan x="64" y="550">Send the pricing brief</tspan>
+</text>
+<text x="64" y="610" font-size="31" font-weight="400" fill="#17324d" text-anchor="start" data-max-width="952">
+<tspan x="64" y="610">Maya | Friday</tspan>
+</text>
+<path d="M64 660H1016" fill="none" stroke="#8b9aa8" stroke-width="1"/>
+<text x="64" y="720" font-size="39" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="952">
+<tspan x="64" y="720">Check the cost figures</tspan>
+</text>
+<text x="64" y="780" font-size="31" font-weight="400" fill="#17324d" text-anchor="start" data-max-width="952">
+<tspan x="64" y="780">Leo | Thursday</tspan>
+</text>
+<text x="64" y="900" font-size="27" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="952">
+<tspan x="64" y="900">Alternative excerpt. Leo&#x27;s task stays the same.</tspan>
+</text>
+</g></svg>

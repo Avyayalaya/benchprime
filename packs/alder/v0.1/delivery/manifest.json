@@ -19,7 +19,7 @@
   "files": {
     "judge/CRITERIA.json": "3b2c3a21838db50945cdcc3811efd5a4b821ac32984b50b23215e992f8711bdf",
     "judge/WORKED_EXAMPLES.json": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
-    "read/CASEBOOK.html": "d9e93014bf9fe4b5a1cdd33fdc89940a4b8636328b99bbb567233b60a99e0899",
+    "read/CASEBOOK.html": "1db6693ffe6215c8e3f8b659e4630f6a420e2a607f5c6a56eaa1504243df53c2",
     "read/cases/case-4be37f5b52519da8c6e3.md": "ebe10339cd998d0f052429ac0fcd588eda6ee13f448d2b875346d24f96a43102",
     "read/cases/case-5738f9dc65fc038e08c8.md": "28a02c69d6294b69cbb46cd6310b8a37e980bc030f15b35d94c841e5bd3155e4",
     "read/cases/case-81750fe8c26c38119445.md": "89a520b6e01e15d80a4e554f16e73e85bd5af4a54ada6b8d115d38589385495a",
@@ -38,7 +38,7 @@
     "read/EXECUTIVE_DESIGN_BRIEF.docx": "dbd98bad8b8498b9e49b6bd161fb4df1e45f225d1e3d81cc72f5ff1f8c53fcf5",
     "read/START_HERE.md": "569596af965b1f6ac581502d15ff803abfed4169ecc8de158cfe71ca2562de11",
     "run/ADAPTER_GUIDE.md": "e04d6ff3b027e423dd390e8b650d86434bd0a9162aabe50b15ff8924fa93b69f",
-    "run/CANDIDATE_INPUTS.jsonl": "aff801a08851f559b50a2a85c929ce64bad21506969f33764d86aa5f5a405f78",
+    "run/CANDIDATE_INPUTS.jsonl": "bc6eff8a27b0d574a3e10848ee7327b5362bab27748f01fac102f7542f45149d",
     "run/export_priorities.py": "4ed6023626b1dfe27fbe53b10e1ee0f944aca4a3ee86437ff6a61f8f3eb9f88d",
     "run/INPUT_CONTRACT.json": "dd266abfe44189b531bd4febccc773e67e325a73d8f3b8a84ff4668ee70cf38b",
     "run/PROFILE_GUIDE.md": "141e67bf97dcd5d8cff93028bfeb87796ee5e46c33d6d417ad084fdd3352b516"

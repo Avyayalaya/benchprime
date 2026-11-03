@@ -54,7 +54,7 @@ def audit_schema(schema):
             raise ValueError(f"Schema {key} must be a nonnegative integer")
 
 
-def check_schema(schema, value, root, location="$"):
+def resolve_schema(schema, root, location):
     unknown = set(schema) - KEYWORDS
     if unknown:
         raise ValueError(f"Unsupported schema assertion at {location}: {sorted(unknown)}")
@@ -62,11 +62,31 @@ def check_schema(schema, value, root, location="$"):
         reference = schema["$ref"]
         if not reference.startswith("#/$defs/") or reference[8:] not in root.get("$defs", {}):
             raise ValueError(f"Unsupported schema reference: {reference}")
-        return check_schema(root["$defs"][reference[8:]], value, root, location)
+        return resolve_schema(root["$defs"][reference[8:]], root, location)
+    return schema
+
+
+def check_schema(schema, value, root, location="$"):
+    schema = resolve_schema(schema, root, location)
     if "oneOf" in schema:
         alternatives = [check_schema(branch, value, root, location) for branch in schema["oneOf"]]
-        if sum(not errors for errors in alternatives) != 1:
-            return [f"{location}: must match exactly one contract"] + min(alternatives, key=len)
+        matches = sum(not errors for errors in alternatives)
+        if matches != 1:
+            detail = min(alternatives, key=len)
+            # The discriminator selects diagnostics only; every branch still participates in oneOf.
+            if matches == 0 and isinstance(value, dict) and "document_type" in value:
+                declared = []
+                for branch, branch_errors in zip(schema["oneOf"], alternatives):
+                    branch = resolve_schema(branch, root, location)
+                    discriminator = branch.get("properties", {}).get("document_type")
+                    if discriminator is not None:
+                        discriminator = resolve_schema(discriminator, root, location + ".document_type")
+                        if "enum" in discriminator and not check_schema(
+                                discriminator, value["document_type"], root, location + ".document_type"):
+                            declared.append(branch_errors)
+                if len(declared) == 1:
+                    detail = declared[0]
+            return [f"{location}: must match exactly one contract"] + detail
     errors = []
     types = schema.get("type")
     matches = {
@@ -116,4 +136,3 @@ def changed_paths(a, b, prefix=""):
             return {prefix}
         return set().union(*(changed_paths(x, y, f"{prefix}/{i}") for i, (x, y) in enumerate(zip(a, b))))
     return set() if a == b else {prefix}
-

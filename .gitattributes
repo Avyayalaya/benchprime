@@ -1,0 +1,5 @@
+# Generated text has the same bytes in local commands and fresh checkouts.
+*.html text eol=lf
+*.jsonl text eol=lf
+# Delivery manifests bind bytes, including text files, across all platforms.
+/packs/alder/v0.1/delivery/** -text

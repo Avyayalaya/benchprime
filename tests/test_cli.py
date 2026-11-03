@@ -1,5 +1,6 @@
 import base64
 import copy
+import hashlib
 from html.parser import HTMLParser
 import json
 import os
@@ -35,8 +36,19 @@ class HtmlLinks(HTMLParser):
 
 
 class CommandTests(unittest.TestCase):
+    def test_bundled_delivery_manifest_matches_all_shipped_bytes(self):
+        folder = SAMPLE.parent / "delivery"
+        manifest = json.loads((folder / "manifest.json").read_text(encoding="utf-8"))
+        actual = {p.relative_to(folder).as_posix() for p in folder.rglob("*") if p.is_file()}
+        self.assertEqual(actual, set(manifest["files"]) | {"manifest.json"})
+        for name, expected in manifest["files"].items():
+            with self.subTest(path=name):
+                path = (folder / name).resolve()
+                self.assertTrue(path.is_relative_to(folder.resolve()))
+                self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(), expected)
+
     def setUp(self):
-        self.temporary = tempfile.TemporaryDirectory(prefix="benchprime-test-")
+        self.temporary = tempfile.TemporaryDirectory(prefix="benchprime-test-", dir=ROOT)
         self.addCleanup(self.temporary.cleanup)
         self.work = Path(self.temporary.name)
         self.pack = json.loads(SAMPLE.read_text(encoding="utf-8"))
@@ -124,6 +136,93 @@ class CommandTests(unittest.TestCase):
         self.call("prepare", self.save(self.pack), "--output", output, success=False)
         self.assertFalse(output.exists())
 
+    def test_draft_validation_reports_pack_fields_and_prepare_first(self):
+        folder = ROOT / "examples" / "meeting-actions"
+        draft = folder / "authored-draft.json"
+        before = draft.read_bytes()
+        result = self.call("validate", draft, success=False)
+        self.assertIn("missing pattern_bundle_hash", result.stderr)
+        self.assertIn("missing pattern_applications", result.stderr)
+        self.assertNotIn("undeclared key cases", result.stderr)
+        self.assertNotIn("undeclared key criteria", result.stderr)
+        self.assertNotIn("missing target_kind", result.stderr)
+        self.assertIn("python -m benchprime prepare", result.stderr)
+        self.assertIn(str(draft), result.stderr)
+        self.assertIn("new filename", result.stderr)
+        self.assertEqual(result.stdout, "")
+        self.assertEqual(draft.read_bytes(), before)
+        output = self.work / "prepared.json"
+        self.call("prepare", draft, "--output", output)
+        checked = self.call("validate", output)
+        self.assertEqual(checked.stderr, "")
+        self.assertEqual(json.loads(checked.stdout)["status"], "structurally_valid")
+        self.assertFalse(json.loads(checked.stdout)["semantic_certification"])
+
+    def test_validate_only_suggests_prepare_when_it_can_fix_the_omissions(self):
+        for field in ("pattern_bundle_hash", "pattern_applications"):
+            with self.subTest(field=field):
+                draft = copy.deepcopy(self.pack)
+                del draft[field]
+                result = self.call("validate", self.save(draft), success=False)
+                self.assertIn("missing " + field, result.stderr)
+                self.assertIn("python -m benchprime prepare", result.stderr)
+        draft = copy.deepcopy(self.pack)
+        del draft["criteria"][0]["evidence"][0]["sha256"]
+        result = self.call("validate", self.save(draft), success=False)
+        self.assertIn("missing sha256", result.stderr)
+        self.assertIn("python -m benchprime prepare", result.stderr)
+
+    def test_validate_never_offers_prepare_as_a_fix_for_authored_or_stale_errors(self):
+        drafts = []
+        wrong_hash = copy.deepcopy(self.pack)
+        wrong_hash["criteria"][0]["evidence"][0]["sha256"] = "wrong"
+        drafts.append((wrong_hash, "Stale/wrong evidence text"))
+        wrong_pointer = copy.deepcopy(self.pack)
+        wrong_pointer["criteria"][0]["evidence"][0]["pointer"] = "/missing"
+        drafts.append((wrong_pointer, "missing"))
+        malformed = copy.deepcopy(self.pack)
+        del malformed["pattern_bundle_hash"]
+        malformed["cases"] = "not cases"
+        drafts.append((malformed, "$.cases: expected ['array']"))
+        no_collection = copy.deepcopy(self.pack)
+        del no_collection["collection"]
+        drafts.append((no_collection, "Collection-first"))
+        missing_authored = copy.deepcopy(self.pack)
+        del missing_authored["pattern_bundle_hash"]
+        del missing_authored["card"]["job"]
+        drafts.append((missing_authored, "$.card: missing job"))
+        for draft, error in drafts:
+            with self.subTest(error=error):
+                result = self.call("validate", self.save(draft), success=False)
+                self.assertIn(error, result.stderr)
+                self.assertNotIn("python -m benchprime prepare", result.stderr)
+                self.assertEqual(result.stdout, "")
+
+    def test_unknown_and_wrong_document_types_are_not_preparation_candidates(self):
+        for kind in ("unknown", "evaluation_design_brief", "repeatability_intake", None):
+            with self.subTest(kind=kind):
+                draft = copy.deepcopy(self.pack)
+                draft["document_type"] = kind
+                result = self.call("validate", self.save(draft), success=False)
+                self.assertNotIn("python -m benchprime prepare", result.stderr)
+                self.assertNotIn("Traceback", result.stderr)
+
+    def test_output_new_writes_utf8_lf_and_preserves_existing_files(self):
+        from benchprime.cli import output_new
+        destination = self.work / "lf.txt"
+        output_new(destination, "caf\u00e9\nsecond\n")
+        self.assertEqual(destination.read_bytes(), b"caf\xc3\xa9\nsecond\n")
+        with self.assertRaisesRegex(ValueError, "new filename"):
+            output_new(destination, "replacement\n")
+        self.assertEqual(destination.read_bytes(), b"caf\xc3\xa9\nsecond\n")
+
+    def test_json_export_is_lf_delimited(self):
+        destination = self.work / "candidates.jsonl"
+        self.call("export", SAMPLE, "--output", destination)
+        payload = destination.read_bytes()
+        self.assertNotIn(b"\r", payload)
+        self.assertEqual(payload.count(b"\n"), 12)
+
     def test_prepare_explicitly_defers_unassessed_methods(self):
         del self.pack["pattern_applications"]
         output = self.work / "prepared.json"
@@ -204,11 +303,12 @@ class CommandTests(unittest.TestCase):
         self.assertIn("EXECUTIVE_DESIGN_BRIEF.docx", links)
         self.assertTrue(any(url.startswith("cases/") for url in links))
 
-    def test_collection_help_links_to_the_visible_overview_tab(self):
+    def test_collection_help_describes_complete_in_place_checks(self):
         output = self.work / "help.html"
         self.call("render", SAMPLE, "--output", output)
         text = output.read_text(encoding="utf-8")
-        self.assertIn('rules listed on <a href="#overview">Overview</a>', text)
+        self.assertIn('including shared rules, are listed above.', text)
+        self.assertNotIn('rules listed on <a href="#overview">Overview</a>', text)
         self.assertNotIn("rules listed on Start here.", text)
 
     def test_legacy_help_uses_the_visible_start_here_label(self):
@@ -304,6 +404,94 @@ class CommandTests(unittest.TestCase):
         self.assertIn("descriptive", task)
         self.assertIn("private", task)
         self.assertIn("## Evaluation purpose", task)
+
+    def test_intake_import_preserves_exact_bytes_metadata_and_immutable_retry(self):
+        intake = json.loads((ROOT / "examples" / "ticket-triage" / "intake.json").read_text(encoding="utf-8"))
+        intake["brief_id"] = "IMPORT-ROUNDTRIP"
+        intake["revision"] = "revision-seven"
+        intake["target"]["input_shape"] = "A JSON envelope with ticket, locale and a policy revision."
+        intake["sources"][0]["provenance"] = "permissioned"
+        intake["sources"][0]["authority"]["basis"] = "A declared routing rule, not inferred from examples."
+        intake["sources"][0]["rights"]["basis"] = "Processing allowed for this local fictional fixture only."
+        intake["sources"][0]["text"] += "\r\nKeep the original caf\u00e9 spelling.\nEnd."
+        for bom, line_ending in ((b"", "\n"), (b"\xef\xbb\xbf", "\r\n")):
+            with self.subTest(bom=bom, line_ending=line_ending):
+                raw = bom + (json.dumps(intake, ensure_ascii=False, indent=3).replace("\n", line_ending)
+                             + line_ending).encode("utf-8")
+                source = self.work / ("intake-bom.json" if bom else "intake-lf.json")
+                source.write_bytes(raw)
+                destination = self.work / ("import-bom" if bom else "import-lf")
+                result = json.loads(self.call("start", destination, "--from-intake", source).stdout)
+                imported = destination / "imported-intake.json"
+                self.assertTrue(imported.is_file())
+                self.assertEqual(imported.read_bytes(), raw)
+                self.assertEqual(result["imported_intake"], str(imported))
+                self.assertFalse(result["generation_started"])
+                self.assertEqual(result["files_created"],
+                                 len([path for path in destination.rglob("*") if path.is_file()]))
+                self.assertEqual(result["files_created"], 3 + len(intake["sources"]))
+                task_path = destination / "task.md"
+                task = task_path.read_text(encoding="utf-8")
+                kickoff = (destination / "KICKOFF.md").read_text(encoding="utf-8")
+                for text in (task, kickoff):
+                    self.assertIn("imported-intake.json", text)
+                    self.assertIn("immutable", text)
+                    self.assertIn("new current intake", text)
+                for value in (intake["brief_id"], intake["revision"], intake["schema_version"],
+                              intake["target"]["input_shape"], intake["sources"][0]["provenance"],
+                              intake["sources"][0]["authority"]["basis"], intake["sources"][0]["rights"]["basis"]):
+                    self.assertIn(value, task)
+                sources = sorted((destination / "sources").glob("*.txt"))
+                self.assertEqual(sources[0].read_bytes(), intake["sources"][0]["text"].encode("utf-8"))
+                task_path.write_bytes(b"# Edited task\nUse a new policy.\n")
+                before_retry = {p.relative_to(destination): p.read_bytes()
+                                for p in destination.rglob("*") if p.is_file()}
+                self.call("start", destination, "--from-intake", source, success=False)
+                self.assertEqual(before_retry, {p.relative_to(destination): p.read_bytes()
+                                               for p in destination.rglob("*") if p.is_file()})
+                self.assertEqual(source.read_bytes(), raw)
+
+    def test_null_input_shape_remains_explicitly_unspecified(self):
+        intake = json.loads((ROOT / "examples" / "ticket-triage" / "intake.json").read_text(encoding="utf-8"))
+        intake["target"]["input_shape"] = None
+        destination = self.work / "unspecified-input"
+        self.call("start", destination, "--from-intake", self.save(intake))
+        task = (destination / "task.md").read_text(encoding="utf-8")
+        self.assertIn("## Input shape", task)
+        self.assertIn("null", task)
+        self.assertIn("unspecified", task.lower())
+
+    def test_unimported_workspaces_do_not_claim_an_import(self):
+        task = self.work / "original.md"
+        task.write_bytes(b"# Original\n")
+        for name, options in (("blank", ()), ("task", ("--task", task))):
+            with self.subTest(name=name):
+                destination = self.work / name
+                result = json.loads(self.call("start", destination, *options).stdout)
+                self.assertEqual(result["files_created"], 2)
+                self.assertNotIn("imported_intake", result)
+                self.assertFalse((destination / "imported-intake.json").exists())
+
+    def test_help_explains_command_contracts_and_limits(self):
+        expected = {
+            (): ("AGENTS.md", "no model generation", "structural"),
+            ("start",): ("repeatability_intake", "imported-intake.json", "unchanged", "new directory"),
+            ("validate",): ("evaluation_design_brief", "evaluation_design_pack", "repeatability_brief",
+                            "structural", "semantic", "prepare"),
+            ("prepare",): ("evaluation_design_pack", "derived", "new filename"),
+            ("freeze",): ("repeatability_intake", "repeatability_brief", "new filename"),
+            ("references",): ("repeatability_brief", "authority", "new filename"),
+            ("inspect",): ("evaluation_design_pack", "coverage"),
+            ("render",): ("evaluation_design_pack", "HTML", "grading", "new filename"),
+            ("export",): ("evaluation_design_pack", "one-based", "blocked", "reserved",
+                          "JSONL", "input", "target", "case_id", "new filename"),
+            ("catalog",): ("patterns", "principles"),
+        }
+        for command, phrases in expected.items():
+            with self.subTest(command=command):
+                text = " ".join(self.call(*command, "--help").stdout.split())
+                for phrase in (*phrases, "AGENTS.md", "no model generation"):
+                    self.assertIn(phrase, text)
 
     def test_start_refuses_existing_directory(self):
         self.call("start", self.work, success=False)

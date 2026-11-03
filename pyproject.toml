@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "benchprime"
-version = "0.1.0.dev6"
+version = "0.1.0.dev7"
 description = "Evaluation creation for user-defined purposes and use cases"
 readme = "README.md"
 license = {file = "LICENSE"}

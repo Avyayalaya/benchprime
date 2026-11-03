@@ -1,9 +1,60 @@
-# BenchPrime capability manifest
+# BenchPrime: agent entry contract
 
-BenchPrime is a system for creating evaluations for user-defined purposes and
-use cases. Separate the evaluation purpose, what is being evaluated, and the
-creation/execution interface. The assistant-led route below is one packaged
-implementation; it does not define the product's intended domain.
+Use BenchPrime to turn a user's task, rules and permitted sources into a
+reviewable evaluation definition. This distribution supports English text/JSON
+with a file-capable assistant and Python 3.10+. Run local commands from this
+repository root. They use the standard library and make no provider calls.
+
+**First choose the operation:** inspect an existing pack, start a new design,
+or revise an accepted evaluation. A task workspace is scaffolding; creating it
+does not generate cases or approve their use.
+
+## Required inputs and default mode
+
+Recover the evaluation purpose, subject/job, expected input/output, governing
+rules and permitted source material. Keep facts, policies and preferences
+separate. Ask about missing information only when it changes validity,
+essential scope or permission. Declare unresolved rights/authority explicitly.
+
+**Default: author-assisted in the current conversation.** Interpret, challenge,
+write and review within that mode, recording actual exposure. Separate-context
+work is optional and requires deliberately controlled handoffs. A new turn
+does not establish independence.
+
+## Execute this path
+
+Use one new workspace for the task; replace `work/my-eval` below with its path.
+
+| Stage | Action | Result / stop condition |
+|---|---|---|
+| Start | `python -m benchprime start work/my-eval` | `task.md`, `sources/`, `KICKOFF.md`; `generation_started: false` |
+| Interpret and design | Read the task/sources and follow the selected mode in `workflows/generate.md` | Proposed `collection-design.md`, source authority, rights, distinctions and gaps |
+| Approval | Present the design for review | **STOP.** No cases or criteria until the user accepts the scope. The assistant owns this pause; Python does not enforce it. |
+| Create | Author the current intake, stage records and draft under the approved scope | Proposed cases/criteria with source evidence and acceptable alternatives; preserve actual assistance |
+| Prepare | `python -m benchprime prepare work/my-eval/draft.json --output work/my-eval/evaluation.json` | Binds permitted derived fields and validates; never repairs semantic meaning |
+| Check | `python -m benchprime validate work/my-eval/evaluation.json` then `inspect` with the same path | Structural validity and counts; semantic quality and target performance remain separate |
+| Deliver | `render` and `export`, each with the evaluation path and a new `--output` path | Local casebook, isolated candidate inputs, review summary and unresolved gaps |
+
+Use `freeze` and `references` for the current typed intake before authoring
+source-bound stage records. The [full workflow](workflows/generate.md) defines
+the formats and reasoning at each stage. The [human guide](START_HERE.md)
+contains both handoff messages and the approval questions.
+
+With `start --from-intake`, the workspace retains byte-exact
+`imported-intake.json`. Use it to recover original identity, source provenance
+and input shape. Keep it unchanged; task edits require a new current intake.
+With `--task`, the starter copies the task file; add its source files explicitly.
+
+**Completion:** return artifact paths, actual command outcomes, assistance
+mode, proposed/accepted review status and remaining gaps. Only the candidate
+record's `input` belongs in a separately approved target request. Do not send
+its tracking ID, criteria, sibling cases or reviewer context.
+
+**Recovery:** preserve failed drafts and source versions. For an unprepared
+pack, use `prepare` on a new output path and then validate it. Repair genuine
+field errors in a new draft version; never delete legitimate pack fields merely
+to fit another document type. Existing outputs are immutable: retry using
+new versioned filenames. Stop on unresolved source rights or governing conflicts.
 
 Status: developer preview. Read `RELEASE_STATUS.json` for distribution scope.
 License: MIT; see `LICENSE`. It covers the original code, documentation,

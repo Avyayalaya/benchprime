@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080" role="img" aria-labelledby="title description">
+<title id="title">The first case includes
+Leo&#x27;s task.</title><desc id="description">Under the supplied policy, MA-001 includes Leo&#x27;s task and excludes Maya&#x27;s proposal.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#17324d"/></marker></defs>
+<rect width="1080" height="1080" fill="#ffffff"/>
+<g font-family="Segoe UI, Arial, sans-serif">
+<text x="64" y="110" font-size="54" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="952">
+<tspan x="64" y="110">The first case includes</tspan>
+<tspan x="64" y="179">Leo&#x27;s task.</tspan>
+</text>
+<path d="M64 980H1016" fill="none" stroke="#8b9aa8" stroke-width="1"/>
+<text x="64" y="1024" font-size="25" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="952">
+<tspan x="64" y="1024">BenchPrime | Fictional authored example | No target run</tspan>
+</text>
+<text x="64" y="300" font-size="28" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="952">
+<tspan x="64" y="300">Authored expected action</tspan>
+</text>
+<text x="64" y="390" font-size="52" font-weight="600" fill="#17324d" text-anchor="start" data-max-width="952">
+<tspan x="64" y="390">Check the cost figures</tspan>
+</text>
+<text x="64" y="510" font-size="38" font-weight="400" fill="#17324d" text-anchor="start" data-max-width="952">
+<tspan x="64" y="510">Owner: Leo     Due: Thursday</tspan>
+</text>
+<path d="M64 620H1016" fill="none" stroke="#8b9aa8" stroke-width="1"/>
+<text x="64" y="700" font-size="35" font-weight="400" fill="#17324d" text-anchor="start" data-max-width="952">
+<tspan x="64" y="700">Leo has agreed to a task.</tspan>
+<tspan x="64" y="745">Maya has made a suggestion.</tspan>
+</text>
+<text x="64" y="895" font-size="27" font-weight="400" fill="#485b6d" text-anchor="start" data-max-width="952">
+<tspan x="64" y="895">Policy A2 / A3</tspan>
+</text>
+</g></svg>

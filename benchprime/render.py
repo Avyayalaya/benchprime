@@ -137,9 +137,19 @@ def collection_panels(model, *, standalone=False):
         f'<td data-label="Tests">{cat["test_count"]}</td><td data-label="Scenario groups">{cat["scenario_count"]}</td><td>{esc(cat["rationale"])}</td></tr>'
         for cat in c["categories"])
     gaps = "".join(f'<li><strong>{esc(g["dimension"])}:</strong> {esc(g["reason"])}</li>' for g in c["gaps"])
+    first_scenario = next((s for s in c["scenarios"] if s["test_count"] > 0), None)
+    entry = (
+        '<div class="start-actions">'
+        f'<a href="#cases" data-open-family="{esc(first_scenario["family_id"])}">'
+        f'Inspect a scenario: {esc(first_scenario["title"])}</a>'
+        '<a href="#landscape">See the collection coverage</a></div>'
+        '<p>Start with the input and its proposed checks. Open the supporting evidence '
+        'and ask whether a valid answer could fail. Then inspect the wider coverage.</p>'
+    ) if first_scenario else '<p>No populated scenario is available to inspect.</p>'
     overview = (
         f'<p class="collection-summary">{esc(D.O.summary(c))}</p>'
         f'<p>{esc(c["purpose"])}</p>'
+        + entry +
         f'<p>{count["categories"]} categories and {count["themes"]} themes are declared; '
         f'{count["populated_themes"]} themes have tests. '
         f'{count["exposed_requirements"]} of {count["requirements"]} requirements have designed exposure; '
@@ -150,8 +160,7 @@ def collection_panels(model, *, standalone=False):
         f'<tbody>{rows}</tbody></table></div>'
         '<p class="meta">Tests use one primary category, so these counts sum to the collection total. '
         'Secondary theme/category links overlap and are not additive. Case count and priority are not performance.</p>'
-        '<div class="start-actions"><a href="#landscape">Explore categories and scenarios</a>'
-        '<a href="#coverage">Principles and dimensions</a></div>'
+        '<p><a href="#coverage">Read the principles and dimensions behind this design</a></p>'
         '<h2>The design logic</h2><p class="ontology-path">Principles and target dimensions explain the categories. '
         'Themes organize scenario groups. Cases and their checks sit inside those groups.</p>'
         '<p>Selection earns its place through a meaningful distinction. Balanced controls, traceable authority '
@@ -348,7 +357,7 @@ def render_html(model, *, standalone_inputs=None):
     for case in model["cases"]:
         rules = []
         for c in case["criteria"]:
-            if c["scope"] == "shared":
+            if c["scope"] == "shared" and not collection:
                 continue
             support_html = "".join(f"<p><strong>{esc(label)}</strong></p><pre>{esc(quote)}</pre><p>{esc(explanation)}</p>"
                                    for label, quote, explanation in map(support, c["evidence"]))
@@ -378,6 +387,12 @@ def render_html(model, *, standalone_inputs=None):
         if standalone:
             case_download = download_attributes(case_markdown(case, family), stem(case["id"]) + ".md",
                                                 "text/markdown")
+        checklist_help = (
+            "All applicable checks for this case, including shared rules, are listed above. "
+            "Different wording is welcome when the meaning is preserved."
+        ) if collection else (
+            f'Apply any collection-wide rules listed on <a href="#overview">{esc(tabs[0][1])}</a>. '
+            'Different wording is welcome when the meaning is preserved.')
         articles.append(f'<article id="{stem(case["id"])}" data-search="{esc(search_text)}" '
                         f'data-track="{esc(case["track"])}" data-dimensions="{esc(" ".join(sorted(dimensions_for(case))))}"'
                         + (f' data-family="{esc(case["family_id"])}"' if collection else "") + '>'
@@ -386,7 +401,7 @@ def render_html(model, *, standalone_inputs=None):
                         f'{source_html}<details><summary>Instructions used with this input</summary><ol>{policies}</ol>'
                         f'<p>{esc(case["input"]["context"]["tool_boundary"])}</p></details></div>'
                         f'<h4>What a good response must do</h4><ol class="checks">{"".join(rules)}</ol>'
-                        f'<p class="meta">Apply any collection-wide rules listed on <a href="#overview">{esc(tabs[0][1])}</a>. Different wording is welcome when the meaning is preserved.</p>'
+                        f'<p class="meta">{checklist_help}</p>'
                         f'<details><summary>Compare with the related test</summary>'
                         f'{comparisons}<p>Related case: {related}</p></details>'
                         f'<details><summary>Test limits and technical details</summary><ul>{limits}</ul>'

@@ -3,8 +3,8 @@
 This is the assistant-led creation route packaged with BenchPrime. Use it
 with a file/tool-capable AI assistant and Python 3.10+. The evaluation purpose
 and subject can vary independently of that interface. Keep stages
-separate and save their artifacts. Use fresh conversations for blind work;
-if context isolation cannot be established, mark the work author-assisted.
+separate and save their artifacts. The default route is author-assisted in
+the current conversation; separated contexts are an optional mode.
 
 **Goal:** produce a useful task-specific evaluation with a justified collection
 design, self-contained cases, source-grounded criteria and visible gaps.
@@ -25,11 +25,27 @@ approval, continue to a reviewable draft unless essential authority, rights
 or facts are missing. This is an instruction to the assistant, not a
 software-enforced pause.
 
-Use [the first-session guide](../docs/first-session.md) for the assisted route
-and optional manual context handoffs. Default to author-assisted provenance.
+Use [the agent entry contract](../AGENTS.md) for operation order and
+[the first-session guide](../docs/first-session.md) for optional manual handoffs.
+Default to author-assisted provenance.
 Keep uncertainty explicit and ask only questions that change what is valid.
 Record actual context exposure; fresh or blind work requires established
 separation. A new turn alone does not provide it.
+
+## Choose the mode once, record exposure at every stage
+
+| Mode | Interpretation and challenge | Initial criteria | Provenance |
+|---|---|---|---|
+| Assisted (default) | Write a profile, then a deliberate challenge pass in the same context | Derive checks from each complete candidate input; audit them against that input while acknowledging prior design exposure | Author-assisted; revisions using earlier keys/feedback are review-guided |
+| Separated (explicit choice) | Independent profile/challenge contexts receive the same frozen sources, without each other's inventories | A fresh context per case receives only its opaque ID, complete input and neutral request | Record actual allowed/withheld inputs; claim separation only when established |
+
+The assisted route requires the same source reasoning, contrasts and critique.
+It does not require the user to create additional sessions. If separated mode
+is requested but unavailable or contaminated, state the limitation and retain
+assisted/review-guided provenance; never silently claim a blind pass.
+
+Paths beginning `work/` below are illustrative. Substitute the selected task
+workspace consistently so stage outputs do not escape into another task.
 
 ## 1. Establish the job and authority
 
@@ -66,9 +82,13 @@ new brief version, followed by new checks of affected criteria.
 
 ## 2. Interpret and challenge the task separately
 
-Produce a profile inventory from the frozen brief. In a fresh context, produce
-a challenge inventory from the same brief without the first inventory.
-Both must account for all sources and distinguish rules from facts.
+Produce a profile inventory from the frozen brief.
+In **assisted mode**, produce a separate challenge inventory in the same
+conversation, deliberately seeking alternative interpretations and omissions;
+record that the first inventory was visible.
+In **separated mode**, supply a fresh challenge context with the same brief,
+references and schema, withholding the profile inventory and prior discussion.
+Both inventories must account for all sources and distinguish rules from facts.
 Use computed reference objects from `work/references.json`; never invent
 offsets or hashes. For a narrower excerpt, compute it with
 `benchprime.contracts.reference`, using the chosen pointer and offsets.
@@ -126,10 +146,17 @@ policy text into each candidate. Do not give candidates sibling scenarios,
 designer explanations, expected answers or private reviewer knowledge.
 Record one primary category per case; secondary memberships are not additive.
 
-## 5. Derive criteria in fresh case contexts
+## 5. Derive criteria from each case input
 
-For each case, start a fresh context containing only an opaque case ID and
-that candidate's input. Ask for observable acceptance criteria with:
+For each case, ask for observable acceptance criteria grounded in its complete
+candidate input. In **assisted mode**, use the current context and record the
+design/family exposure; recheck every criterion against actual input evidence.
+In **separated mode**, start a fresh context containing only an opaque case ID,
+the complete candidate input and the neutral derivation request in the
+first-session guide. Withhold family labels, hypotheses, siblings and preferred
+answers from that context.
+
+Every proposed criterion needs:
 
 - The statement and its applicability.
 - Source evidence within the candidate input.
@@ -137,7 +164,8 @@ that candidate's input. Ask for observable acceptance criteria with:
 - Acceptable alternatives and the consequence of failure.
 - Proposed review state; no self-certified independent review.
 
-The initial derivation sees no family label, hypothesis or preferred answer.
+Only the properly separated initial derivation can claim those labels and
+answers were withheld. The assisted route makes no blind-derivation claim.
 Use evidence pointers into the candidate; `prepare` can bind missing derived
 fields later. Unknown facts cannot become invented obligations.
 

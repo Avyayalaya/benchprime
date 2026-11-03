@@ -3,6 +3,7 @@
 import base64
 import copy
 from html.parser import HTMLParser
+from html import unescape
 import json
 import os
 from pathlib import Path
@@ -12,6 +13,7 @@ import subprocess
 import sys
 import unittest
 import uuid
+from urllib.parse import urlsplit
 
 from benchprime import collection, contracts, design, render
 from benchprime.cli import prepare
@@ -315,8 +317,31 @@ class MeetingActionsTests(unittest.TestCase):
             text = (EXAMPLE / name).read_text(encoding="utf-8")
             for target in re.findall(r"\[[^]]+\]\(([^)]+)\)", text):
                 if "://" not in target and not target.startswith("#"):
-                    self.assertTrue((EXAMPLE / target.split("#")[0]).exists(), (name, target))
+                    self.assertTrue((EXAMPLE / urlsplit(target).path).exists(), (name, target))
         self.assertIn("## Quality Check", (EXAMPLE / "README.md").read_text(encoding="utf-8"))
+
+    def test_collection_entry_opens_a_real_scenario_before_taxonomy(self):
+        model = design.project(self.pack)
+        html = render.render_html(model, standalone_inputs=design.candidates(self.pack))
+        scenario = next(s for s in model["collection"]["scenarios"] if s["test_count"])
+        entry = f'data-open-family="{scenario["family_id"]}"'
+        self.assertIn(entry, html)
+        self.assertLess(html.index("Inspect a scenario:"), html.index("Categories and why"))
+        self.assertIn(f'data-family="{scenario["family_id"]}"', html)
+        self.assertIn("a valid answer could fail", html)
+
+    def test_every_case_check_including_shared_format_rules_is_inspectable(self):
+        model = design.project(self.pack)
+        html = render.render_html(model, standalone_inputs=design.candidates(self.pack))
+        for case in model["cases"]:
+            article = re.search(
+                r'<article id="' + re.escape(render.stem(case["id"])) + r'".*?</article>',
+                html, re.S).group(0)
+            for criterion in case["criteria"]:
+                with self.subTest(case=case["id"], criterion=criterion["id"]):
+                    self.assertTrue(criterion["statement"] in unescape(article), "Missing check statement")
+                    self.assertTrue(criterion["applicability"] in unescape(article), "Missing applicability")
+                    self.assertTrue(criterion["alternatives"] in unescape(article), "Missing valid alternatives")
 
     def test_offline_cli_replay_inspection_render_export_and_source_freeze(self):
         # Local, uniquely owned workspace; no system temp path or provider process.

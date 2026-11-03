@@ -1,4 +1,7 @@
-# Create your first evaluation
+# Create an evaluation for your task
+
+Start with the [six-case meeting example](examples/meeting-actions/README.md)
+if you want to see the result first. It is readable on GitHub without setup.
 
 You need a full BenchPrime checkout, Python 3.10+ and an AI assistant that
 can read and write files in that checkout. Your assistant's normal costs
@@ -12,25 +15,65 @@ From the repository root:
 python -m benchprime start work/my-eval
 ```
 
-This creates `task.md`, `sources/` and `KICKOFF.md`.
+This creates `task.md`, `sources/` and `KICKOFF.md`. It creates a workspace;
+your assistant will write the evaluation.
 
-In `task.md`, describe what your AI should do, what decision the evaluation
-should support and which rules it must follow. Add permitted sources and
-identify their roles and processing rights.
+Fill in `task.md` and add permitted sources. A concrete example:
+
+| Field | Example |
+|---|---|
+| Decision | Compare two prompts for extracting agreed meeting actions |
+| Job and input | Read an action policy and one meeting excerpt |
+| Required output | JSON actions with task, owner and due date |
+| Rules that matter | Include accepted future work; exclude proposals and completed work; use `null` for missing owner/date |
+| Sources and rights | The bundled fictional policy and notes, with their declared MIT rights |
+
+Use your own requirements and source permissions for your task. Preferences
+such as wording or ordering should remain flexible unless the task requires them.
+
+To explore that supplied task, choose a **different, new** workspace:
+
+```powershell
+python -m benchprime start work/meeting-design --from-intake examples/meeting-actions/intake.json
+```
+
+Typed startup preserves `imported-intake.json` alongside the editable summary.
+Keep that original intact. If you change the task, create a new current intake.
 
 ## 2. Review the test plan
 
-Give the generated `KICKOFF.md` to your file-capable assistant.
-It should write **`collection-design.md` and stop for your review**.
+**First message** — after editing `work/my-eval/task.md`, give this to your assistant:
 
-Check whether the proposed categories and scenarios cover the distinctions
-that matter. Resolve questions about validity and permission before
-continuing. Your assistant must honor this review pause. Python does not enforce it.
+```text
+Read work/my-eval/KICKOFF.md and follow it for work/my-eval/task.md.
+Propose collection-design.md and stop for my review before creating cases.
+```
+
+If you chose a different directory, substitute its path. The default is an
+**author-assisted** draft in your existing conversation.
+
+Read `collection-design.md` and decide:
+
+- **Right rules?** Each proposed requirement should follow from the task or a governing source.
+- **Right distinctions?** Include consequential differences and valid alternatives; name important gaps.
+- **Permitted sources?** Resolve missing authority, essential facts and processing rights.
+
+Request corrections before accepting the design. This pause is an assistant
+instruction; Python does not enforce it.
 
 ## 3. Build and inspect the evaluation
 
-Approve the stated design, then continue with the
-[copyable second message](docs/first-session.md#second-message-approve-a-scope-and-continue).
+**Second message** — use only after you accept the design:
+
+```text
+The design is approved for the stated scope. Continue with the assisted
+draft route. Preserve the task's rules and source text. Write coherent
+cases, proposed criteria with evidence and acceptable alternatives, and
+explicit coverage gaps. Keep the work labelled author-assisted.
+Run prepare, validate, inspect, render and export on new output paths.
+Do not run a target, install a provider or publish anything.
+Finish with artifact paths, actual help used and unresolved review issues.
+```
 
 | Output | Use it to |
 |---|---|
@@ -39,12 +82,13 @@ Approve the stated design, then continue with the
 | `candidates.jsonl` | Supply case IDs and inputs to a separately approved runner |
 | Review summary | See unresolved findings, assistance and revisions |
 
-Start with one case: could a valid answer fail its checks? Then review the
-collection's coverage. Keep the work labelled **author-assisted** and
-[review the criteria](docs/reviewing-an-evaluation.md) before relying on them.
+Open the casebook locally and choose **Inspect a scenario**. Read its input,
+check the supporting rule and try an acceptable alternative. Could a valid
+answer fail the proposed check? Then review coverage and
+[challenge the criteria](docs/reviewing-an-evaluation.md).
 
-The assistant generates the content. Python checks and exports it.
-BenchPrime does not run your target or grade its responses.
+The assistant writes the content. Python checks its structure and exports it.
+Target execution and grading use your own separately approved process.
 
 ## Inspect an example without a model
 
@@ -60,7 +104,7 @@ candidate-only JSONL. These commands make no model calls. GitHub displays
 HTML as source; download/open it locally. Use a new output path on repeat
 runs because the tools refuse overwrites.
 
-For source-file options, manual context handoffs and recovery, use the
+For source-file options, optional separated contexts and recovery, use the
 [full first-session guide](docs/first-session.md).
 For the next prompt, model or rule change, use the
 [repeat-use guide](docs/reuse-an-evaluation.md).

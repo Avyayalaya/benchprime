@@ -23,8 +23,9 @@ false`. The second reports 12 cases, 133 criteria, five categories and nine
 themes. Review status remains `partial`: five criteria were corrected by an
 operator and remain proposed.
 
-Open [the casebook](../packs/alder/v0.1/delivery/read/CASEBOOK.html) in your
-browser. Excel and Word versions are in that same folder.
+[Download the casebook](../packs/alder/v0.1/delivery/read/CASEBOOK.html?raw=1)
+and open it locally in your browser; GitHub's HTML view shows source code.
+Excel and Word versions are in that same folder.
 
 ## Export candidate inputs
 
@@ -68,6 +69,14 @@ and export. See [the authored walkthrough](walkthrough.md) for concrete outputs.
 
 The assistant's normal usage/costs and data policies still apply. This package
 does not supply a model session or grant permission to upload private data.
+The [agent entry contract](../AGENTS.md) defines stage outputs, approval,
+recovery and default author-assisted mode.
+
+`start --task` copies a plain task file. `start --from-intake` expands a typed
+intake into the task and sources and preserves its original bytes in
+`imported-intake.json`. The task includes identity, input shape and provenance
+for handoff. Keep the import unchanged; author a new current intake after task
+edits. Neither starter option generates cases.
 
 For an exposed development rehearsal:
 
@@ -101,6 +110,11 @@ only for draft/partial packs; review those dispositions before claiming
 method application. Omit unknown derived values instead of inventing hashes.
 
 ## Errors and scope
+
+Validate a prepared evaluation, not its deliberately incomplete draft. Missing
+derived fields may require `prepare`; other validation errors still require
+correction. Keep the declared document type and valid case/criterion fields.
+Use `python -m benchprime COMMAND --help` for accepted inputs and output meaning.
 
 Commands return exit 1 with `ERROR:` for invalid input or filesystem failures;
 argument syntax errors return exit 2. No successful output is reported after
